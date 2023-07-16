@@ -1,0 +1,547 @@
+1. INTRODUCTION AND GENERAL TERMS
+PRIVACY 
+
+
+
+These terms apply to the use of Clients and other products developed by FACE IT LIMITED (‘FACEIT’ / ‘we’ / ‘us’). Our registered office is at Millbank Tower Faceit 25th Floor, 21-24 Millbank, London, England, SW1P 4QP. We are a company registered in England, with company number 07751649.    
+
+This privacy and data policy (“Privacy Policy”) applies and has effect in respect of all of our software clients for competitive gaming, related online services (including online network play connectivity and interactivity) and other software and products made available by us (together the "Clients"), as well as any other online features relating to our business including our website at www.faceit.com, our developer portal at www.developers.faceit.com, our corporate website at www.corporate.faceit.com ( the “Websites”),  any mailing lists we operate (the “Mailing List”), our online forums  (the “Forums”) and user support centre at www.support.faceit.com (the “Support Centre"). Together the Clients, the Website, the Mailing List, the Forums and the Support Centre are referred to as the “Online Services”.
+
+If you have any questions or comments about this Privacy Policy, please contact us at www.support.faceit.com  
+
+We are committed to protecting and respecting your privacy.  The Privacy Policy explains the basis on which personal information we collect from you will be processed by us or on our behalf. Where we decide the purpose or means for which personal data you supply through these Online Services is processed, we are the “data controller.” We will comply with all applicable data protection laws, including the General Data Protection Regulation 2016/679.
+
+Please read this Privacy Policy carefully as it contains important information about the following:
+
+What information we may collect about you;
+How we will use information we collect about you;
+Whether we will disclose your details to anyone else; and
+Your choices and rights regarding the personal information you have provided to us.
+This Privacy Policy should be read in conjunction with our terms of use for the Website and any terms applied to any of the Clients.  
+
+The Online Services may contain hyperlinks to services owned and operated by third parties, on enable the Online Services to be connected to those services by other means. Third party services may have their own privacy policies and we recommend that you review them.  They may govern the use of personal information that you submit or which is collected by cookies and other tracking technologies whilst using these services.  We do not accept any responsibility or liability for the privacy practices of such third party services and your use of these services is at your own risk.
+
+We may make changes to this Privacy Policy in future, which will be notified to you.
+
+2. INFORMATION WE MAY COLLECT ABOUT YOU
+We collect and process the following information which may include your personal data. 
+
+Information provided when you register with our Online Services
+
+(“Registration Information”)
+
+In order to access restricted sections of the Website and install a Client, you are required to providing the following information:
+
+Username;
+Email;
+Password;
+Country;
+Date of birth;
+First Name; and
+Last Name.
+When you sign up or login to our Online Services, we collect the following information:
+
+Type of device used;
+IP address;
+Geolocation details including region, country, state, city;
+Type of browser used; and
+Identifiers associated with your devices.
+ 
+
+Optional Information provided by you when using the Online Services
+
+(“Optional Information”)
+
+If you wish, following registration you may add the following information to your FACEIT profile, by using your FACEIT account settings:
+
+Full address;
+Gender;
+Time zone;
+Phone number;
+Avatar picture;
+Twitch account;
+Facebook profile;
+Twitter profile;
+YouTube profile;
+Discord profile; and
+Google profile.
+You are also able to connect your FACEIT account to third party platforms Steam, Wargaming, XBOX, PSN, Battle.net, Google, Discord and HiRez, in which case we collect the following information in respect of each third party platform:
+
+Username/nickname
+User ID
+An access token, to allow us to connect to your third party account and to ensure we are connecting to the correct third party account; and
+A refresh token, which allows us to request additional access tokens, and therefore re-connect to third party accounts, until the refresh token is withdrawn (if, for example, you decide to disconnect your account from the third party platform).
+If you choose to link a game to your FACEIT account, we will collect the following information in respect of each game:
+
+Nickname;
+ID;
+Rank/Skill Level/Elo, which is based on your previous performance in games;
+Basic profile statistics;
+Bans information; and
+List of Friends (Steam only).
+ 
+
+Information provided by you when using the Online Services
+
+(“Basic Information”)
+
+We will collect the following information from you when you play a game using one our Clients:
+
+Match statistics;
+Match results;
+Event logs, which relate to your in-game behaviour; and
+Chat logs from the game, if you are playing CSGO.
+If you have installed anti-cheat software, we will also collect Anti-Cheat Logs.  This privacy policy should be read in conjunction with any other terms or notices applied to anti-cheat software.
+
+ 
+
+Information used to understand how users have found our Online Services
+
+(“Attribution Information”)
+
+When you sign up, we record the web page from which you have accessed FACEIT.
+
+ 
+
+Contact information provided by you when you contact us or use the Support Centre
+
+(“Contact Information”)
+
+We may ask you for, or you may submit, certain contact information to us whenever you contact us through the Support Centre.  
+
+This may include:
+
+your email address; and
+your name.
+ 
+
+Information provided by you when using the Developers Portal
+
+(“Developer Portal Information”)
+
+In order to set up an account to use the Developer Portal, we will collect the following information from you:
+
+username;
+email address;
+password; and
+a unique User ID which identifies your account.
+Alternatively, you may choose to login with your FACEIT website account.
+
+ 
+
+Information provided by you when using the Forums
+
+(“Forum Information”)
+
+In order to set up an account to use the Forums, we will collect the following information from you:
+
+username;
+email address;
+password; and
+a unique User ID which identifies your account.
+Alternatively, you may choose to login with your FACEIT website account.
+
+ 
+
+Information collected for the purposes of providing analytics 
+
+(“Analytics”)
+
+We may collect technical information about your use of the Online Services through the use of tracking technologies and analytics.
+
+Personal data we may collect includes the following:
+
+How many times you visit the Website;
+Which pages you go to;
+Traffic data;
+Online identifiers such as cookie data;
+Your IP and MAC address;
+Your internet service provider;
+Your Console ID;
+Your device operating system & version;
+Your device make, brand and model;
+Your browser type, version and language;
+FACEIT application type and version;
+Game play attempts, progression and results;
+Session Client time start, end and duration;
+The country of your device; and
+Identification of crashes and defects.
+ 
+
+Information collected for the purposes of marketing, promotions and advertising 
+
+(“Advertising”)
+
+We may collect technical information about your use of the Online Services through the use of tracking technologies and certain advertising or marketing partners.
+
+Personal data we may collect includes the following:
+
+Cookie id
+ 
+
+Contact information provided by you when you sign up to our Mailing List
+
+(“Mailing List Information”)
+
+We may ask you for, or you may submit, certain contact information to us whenever you sign up to our Mailing List. 
+
+This may include:
+
+your email address; and
+your name.
+ 
+
+Chat content created by our users
+
+(“User Content”)
+
+When users submit their own User Content to the any of our chat functionality, this content may contain personal and non-personal information. This could include information in or about the User Content, such as the location of a photo or the date a file was created, or anything else a user decides to communicate using these parts of our Online Services.
+
+                      
+
+Information used in order to process payments
+
+(“Payment Information”)
+
+When users buy services through any of our Online Services, those users submit the following information to our payment processors, Xsolla Inc. and Stripe: Your name and surname;
+
+Your address;
+Your date of birth (if required);
+Your nickname; and
+Your billing information;
+ If in doubt on the usage of your payment information, please refer to Xsolla Privacy Policy available at https://xsolla.com/consent and Stripe Privacy Policy available at https://stripe.com/gb/privacy.
+
+ 
+
+Information Provided by You When Completing Surveys
+
+When you complete any forms, respond to a survey or questionnaire, or take part in  a contest or sweepstake, we collect the personal data that you provide.
+
+ 
+
+Information Collected from Publicly Available Sources
+
+(“Public Information”)
+
+In order to appropriately rank you, we may use information available online or from publicly available sources, such as public nickname.
+
+Information Provided by You When You When You Want to Work with Us
+
+(“Business Information”)
+
+When you provide us your personal data to work with us, for example, as part of the production of an event, or to be considered for future work opportunities, we may collect the following personal data:
+
+Your first and last name,
+Your email address, telephone number, address and other contact information,
+Language and country,
+Twitter handle, LinkedIn Profile and other social media information,
+Field of professional expertise,
+Your CV and professional experience, including information on previous work and seniority,
+Fees or payment related information,
+Other information you may share with us in this context.
+ 
+
+ Information we collect from you when using the "watch" feature 
+We offer the "watch" feature on our websites so you can follow a game via live stream or watch games on demand. Parallel to the games, a chat feature can be used which results in messages being publicly displayed during the live stream. 
+
+When using our "watch" service, the Znipe system automatically collects data and information from your device. The following data is collected for a limited period of time:
+
+User ID
+Session ID
+Nickname (Gamer Tag)
+Video Quality Metrics
+Video Playback Interactions
+Feature interactions
+IP address
+Type of browser
+Type of device
+Chat Messages  
+
+Information provided when you choose to verify your account
+
+(“ID Verification Information”)
+
+ 
+
+In order to achieve a “verified status” on your FACEIT account, you may choose to provide us with the following information:
+
+ information based on an individual’s retina or iris scan, fingerprint, or scan of hand or face geometry (“Biometric Data”).  
+ information displayed on ID cards, e.g. name, address, gender, date of birth, place of birth, ID number, signature.
+
+
+3. WHY WE COLLECT INFORMATION ABOUT YOU
+To provide the Online Services to you
+
+We will use information about you (including Basic Information, Registration Information, Optional Information, Analytics and User Content, and Information Publicly Available) for delivering our Online Services to you under the terms of use agreed between us. The processing of information in this way is necessary for us to record the outcome of competitions you enter, your ranking and performance, and to ensure the Clients deliver the features promised and function properly, so that you have the best experience when playing using any one of our Clients or otherwise use the Online Services.
+
+ 
+
+To help us improve the Online Services and fix any problems
+
+We may process information about you (including Basic Information, User Content, Registration Information and Analytics) so that we can analyse and improve our Online Services.
+
+This processing is also necessary for us to pursue our legitimate interests of (i) ensuring that our Online Services function properly so that you and other users have the best experience when playing any of our Clients and using the other Online Services; (ii) improving the quality of our Online Services, and providing a better experience to our users; and (iii) identifying and correcting any bugs in the Clients and Online Services.
+
+We use Mixpanel, New Relic, Papertrail, Stackdriver, Google Analytics, Google Bigquery, Looker and Keen IO to help us understand how our Online services are used.
+
+ 
+
+To respond to your enquiries and requests for support and to enable you to use the Forums, Developer Portal and Support Centre
+
+We may process Contact Information so that we are able to properly respond to your enquiries and support requests via the Support Centre and we may process Forum Information so you are able to use the Forums, in accordance with the terms of use agreed between us.
+
+We use Zendesk to help us handle requests for support.
+
+ 
+
+To acquire new users and engage current users 
+
+ We may process Mailing List Information to make suggestions and recommendations to you about competitions and services that may interest you, to provide you with information about other similar services we offer, and to notify you about changes to our Clients or the services we provide. 
+
+We use Attribution Information to understand which third parties have referred users to us.
+
+We process this information to pursue our legitimate interests of acquiring new users for our Clients and understanding the success of our marketing efforts. 
+
+We use Mailchimp and Mailgun to help us send marketing communications.
+
+We may process Basic Information, for example match replays and highlights, which are shared by our users, by publishing them on our website, to pursue our legitimate interests (and those of our community of users) of promoting gameplay and our platform, and acquiring and engaging users.  If you are concerned about the content of any such material, please contact us at support.faceit.com.
+
+ 
+
+To prevent cheating, fraud and illegal activity
+
+We process personal data, including Anti-Cheat Logs for our legitimate interests of preventing cheating by players using our Client and ensuring that any use of the Online Services is lawful and non-fraudulent, does not disrupt the operation of our services, does not harass our staff or other individuals, to enforce our legal rights and to comply with our legal obligations.
+
+Where we reasonably believe that you are cheating or may be in breach of any applicable laws or our terms of use, we may use your personal information to inform relevant third parties such as your law enforcement agencies about the content.
+
+We process personal data to ensure a fair and rule-compliant platform for you, the other participants and the audience and through this ensuring the integrity and credibility of our platform, tournaments, as well as esports itself as a fair competitive sport. Fair play is a vital part of our Services. As part of our efforts to maintain a fair competitive sport and fair play in esports as a whole, we may share some personal data, such as your Steam ID, with other companies of the same group, including specifically with ESL Gaming online, Inc., in case of cheating. This, to avoid and sanction cheating, so that fair play can be maintained. For more information, we encourage you to read our Terms and Conditions and Anti-Cheat EULA.
+
+We reserve the right to disclose your identity to any third party who is claiming that any User Content posted by you constitutes a violation of their intellectual property rights, or of their right to privacy. You may not copy, download, or embed any User Content without the express written permission of the content owner. You may not use any User Content for any commercial purposes, or any public performances.
+
+ 
+
+ 
+
+To Process Payments
+
+We use Payment information to process payments, in accordance with the terms of a contract entered with the user.
+
+We use Stripe and Xsolla to help us process payments.
+
+ 
+
+To Deliver Your Shop Items and Prizes
+
+We will use information about you (including Basic Information, Registration Information, Optional Information) to deliver the items that you have ordered on our FACEIT shop (https://www.faceit.com/en/shop) or prizes that you have won in our competitions.
+
+We use Steam, Fragstore and BigClan to help us deliver the items.
+
+ 
+
+To Serve Marketing, Promotions and Advertising
+
+We will use information about you (including Basic Information, Registration Information, Optional Information and Advertising Information) to deliver more relevant ads, marketing and promotions.
+
+We use Google Ads Manager and Playwire to help us serve marketing, promotions and advertising.
+
+ 
+
+To conduct research, contests, surveys and sweepstakes
+
+We will use information about you (including Registration Information, Optional Information, Basic Information and Survey Information) to conduct contests, research, surveys and sweepstakes.
+
+We use Survey Monkey to run our surveys.
+
+To potentially conclude a contract with you for the provision of services
+
+We will use your personal data or Business Information to properly identify you as our contractual business partner or a prospective business partner, and to contact you if there are work opportunities for you.
+
+We will store your personal data to consider you for future contracts with us, to communicate with you in order to take steps to enter into a contract with us, if we have a contract with you, to comply with our legal and contractual obligations, to optimize our planning and booking for productions and to defend and/or exercise our rights.
+
+The legal basis for processing your personal data is performance of a contract and legitimate interests, as the case may be.  
+
+To provide the "watch" services to you
+
+We will use your personal data to provide the “watch” services to you, so you can watch game live streams or games on demand. For the "watch" function, we use Znipe.TV, provided by the data processor Znipe Esports AB, c/o 7A Posthuset, Vasagatan 28, 11120 Stockholm, Sweden ("Znipe"). Your data is stored in the log files by Znipe only as required for the analysis of any service malfunctions and is deleted within fourteen days. The legal basis for the temporary storage of the data and the log files are our legitimate interests. 
+
+The temporary storage of your IP address is necessary to enable delivery of the "watch" service and will remain stored for the duration of the session. The data is stored in log files to ensure the functionality of the website. In addition, we use the data to optimize the website and to ensure the security of our information technology systems. The collection of data for the provision of the website and the storage of the data in log files is absolutely necessary for the operation of the website. Consequently, there is no possibility for the user to object.
+
+When you use the chat function, we may process data entered by you and displayed during the live stream, such as your username and the content entered. A subsequent replay of the chats associated with the games will not take place. Subsequently, the chats will only be stored temporarily in order to determine violations of the terms of use. The chats will be deleted no later than 14 days after the end of the live stream. The legal basis for processing chat data is the performance of our contract with you to deliver these services. 
+
+To verify your FACEIT account
+
+We offer you the option to verify your account by authenticating your identity (this applies for all players of the FACEIT platform, with exception of professional players and streamers, who will be verified by other means). Account verification is optional and is offered to foster a fair play environment and to fight unfair practices, such as smurfing or the use of multiple accounts. Please note that to verify your account, you must be at least 18 years of age.
+
+To authenticate your identity, we use a third party identity verification service provider that allows you to submit your ID document and a picture, which are processed for ID verification purposes. The third-party vendor for the provision of these services is Daon Limited, IFSC House, Custom House Quay, Dublin 1, Ireland (“Daon”).
+
+Your ID Verification Information is stored on Daon's European Datacenters for as long as you wish to maintain the “verified” status in your account. If you would like to delete your FACEIT account, please contact us at www.support.faceit.com.
+
+
+
+
+4. COOKIES
+A cookie is a text file placed onto your device when you access our Online Services. We use cookies and other online tracking devices such as web beacons, and flash object storage to deliver, improve and monitor our Website and Clients, including in the following ways:
+
+Stricty Necessary Cookies
+
+These cookies are set by FACEIT or a third party on our behalf and are essential to enable you to use the basic features of our Services, such as logging you into our Website and Clients and keeping you logged in, technically deleting content, setting your privacy preferences or filling in forms. Without these cookies, services you have asked for, e.g. a payment, cannot be provided.
+
+Functional Cookies
+
+These cookies allow the website to remember information about you such as your preferred language and configuration and provide enhanced, more personal features and content.
+
+Performance Cookies
+
+These cookies gather data to help us understand how you use our Clients and Website, and how often, so we can improve them to deliver a better experience for our users and carry out research and statistical analysis to help improve our content, products and services. For example, these cookies allow us to count visits and traffic sources so we can measure and improve the performance of our Services.
+
+Targeting Cookies
+
+These cookies are used to deliver advertisements more relevant to you and your interests. They are also used to limit the number of times you see an advertisement as well as help measure the effectiveness of an advertising campaign. They remember that you have visited the website and this information may be shared with other organizations such as advertisers. These cookies collect information about your browsing habits in order to make advertising relevant to you and your interests.
+
+The information we obtain from our use of cookies will not usually contain your personal data. Although we may obtain information about your device such as your IP address, your browser and/or other internet log information, this will not usually identify you personally.
+
+Please note that if you choose to disable cookies, or similar technologies, on your device you may be unable to make full use of our Clients and Website.
+
+We work with third parties who may also set cookies on our Website, for example Google Analytics, Facebook, Twitter, Twitch, Discord, Playwire, Google Ads Manager and YouTube, which we use to display video content, enable social networking functionality and sharing, and to monitor how visitors use our Clients and Website. These third party suppliers are responsible for the cookies they set on your device. 
+
+There are several options available for managing your cookie preferences, depending on the cookie type and your device. Each of the options are described below. Please note that no one option is sufficient to manage all cookies on all devices. Therefore, you may wish to combine one or more options for complete coverage.
+
+Browser Settings
+
+You can use your web browser settings to accept, refuse and delete cookies. You can withdraw or modify your consent to our use of cookies at any time, with the exception of strictly necessary cookies (as described above). To do this, follow the instructions provided by your browser (usually located within the "Help", "Tools" or "Edit" settings).
+
+Consent Management Platform
+
+In addition, FACEIT uses a consent management platform ("CMP") called OneTrust. You may view the CMP and access your cookie settings at CMP. The CMP allows you to consent to the setting of optional cookies by us and our third-party partners. Using the CMP, you can manage your preferences in relation to how cookies are set according to the category of cookie, as described above. The CMP also allows us to maintain records of your consent. If you wish to update your consent choices via the CMP, please visit CMP.
+
+Please note that as with your web browser settings you will not be able to withdraw consent for cookies which are strictly necessary for the Service to operate.
+
+Mobile Identifiers
+
+On your mobile device, your operating system may provide you with options to opt out of interest based advertising or to otherwise reset your mobile identifier. This is a unique identifier that can be used to identify a mobile device which works in a similar way to a cookie. For example, you may use the "Limit Ad Tracking" setting (on iOS devices) or a setting to "Opt out of Interest-Based Ads" (on Android) which allows you to limit the use of information about your use of apps for purposes of serving ads targeted to your interests.
+
+Google Cookies
+
+If you want to learn about how to opt out of Google’s use of cookies, please visit https://tools.google.com/dlpage/gaoptout/ . The Google Analytics terms of service can be accessed here: www.google.co.uk/analytics/terms/us.html. For further information please visit the website of the relevant third party.
+
+Especially we use Google Ads (“Google Ads”), an online advertising program of Google LLC, on our website. Our contractual partner is the European subsidiary Google Ireland Limited, Google Building Gordon House, 4 Barrow St, Dublin, D04 E5W5, Ireland ("Google").
+
+With Google Ads, so-called conversion tracking is operated. If you click on an ad placed by Google, a cookie is set. This cookie loses its validity after 90 days and is not used to personally identify the user. If the user visits certain pages of this website and the cookie has not yet expired, Google and we can recognize that the user clicked on the ad and was redirected to this page. 
+
+The data collected using the conversion cookie is used to compile statistics for customers who have agreed to conversion tracking. 
+
+Recipients of the data besides us are/may be:
+
+Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland.
+Google LLC, 1600 Amphitheatre Parkway Mountain View, CA 94043, USA, Alphabet Inc.
+Insofar as data is processed outside the EU/EEA and there is no level of data protection that corresponds to the European standard, Google Ireland Limited has concluded EU standard contractual clauses with Google LLC, which is based in California, USA, in order to establish suitable guarantees within the meaning of Article 46 of the GDPR. A copy of the contractual clauses can be found here: https://policies.google.com/privacy/frameworks. A transfer of data to the USA and access by US authorities to the data stored by Google cannot be ruled out. The USA is currently considered a third country from a data protection perspective. You do not have the same rights there as within the EU/EEA. You may not be entitled to any legal remedies against access by authorities.
+
+The legal basis for this data processing is your consent. You can revoke your consent at any time with effect for the future by calling up the cookie settings and changing your selection there. There you will also find information about the cookies processed. The legality of the processing carried out on the basis of the consent until the revocation remains unaffected.
+
+You can also prevent the storage of cookies from the outset by configuring your browser software accordingly. However, if you configure your browser to reject all cookies, this may result in a restriction of functionalities on this and other websites. You can also prevent the collection of data generated by the cookie and related to your use of the website (including your IP address) to Google and the processing of this data by Google, by:
+
+not giving your consent to the setting of the cookie or
+downloading and installing the browser add-on to deactivate Google Analytics: https://tools.google.com/dlpage/gaoptout/ 
+For more information about Google Ads' terms of use and Google's privacy policy, please visit https://ads.google.com/home/ and https://policies.google.com/
+
+Meta Pixel
+
+We use a so-called tracking pixel of Meta Platforms Ireland Ltd, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Ireland, a subsidiary of Meta Platforms Inc, 1601, Willow Road Menlo Park, CA 94025, USA, ("Facebook") on our website (“Facebook Pixel”). We use Facebook Pixel to track the success of our own Facebook advertising campaigns and to optimize the playout of Facebook advertising campaigns to interested target groups.
+
+After clicking on a Facebook ad or visiting our website, a cookie is stored on your terminal device using the pixel on our website. The cookie processes data about whether you arrived at our website via a Facebook ad and allows us to analyze the user's behavior until the purchase is completed. This allows us to track the success rate of our Facebook advertising campaigns. In addition, the pixel processes data about the fact that you have visited our website and allows us to customize the ads played on Facebook to your interests.
+
+Via the Facebook pixel integrated on our website, a direct connection to Facebook's servers is established when you visit our website. The information generated by the cookie about your use of this website (including your IP address) is transmitted to Facebook in the USA. 
+
+      In addition to us, recipients of the data are:
+
+Meta Platforms Ireland Ltd, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Ireland (as processor according to Art. 28 DSGVO).
+Meta Platforms Inc, 1601, Willow Road Menlo Park, CA 94025, USA (as sub-processor according to Art. 28 DSGVO).
+Meta Platforms Ireland Ltd. has concluded EU standard contractual clauses with Meta Platforms Inc., which is based in California, USA, in order to establish appropriate safeguards within the meaning of Art. 46 of the GDPR. A copy of the standard contractual clauses can be found here: https://www.facebook.com/legal/EU_data_transfer_addendum. A transfer of data to the USA and access by US authorities to the data stored by Facebook cannot be ruled out. The USA is currently considered a third country from a data protection perspective. You do not have the same rights there as within the EU/EEA. You may not be entitled to any legal remedies against access by authorities.
+
+The data collected is anonymous for us and does not allow us to draw any conclusions about the user. If you are registered with Facebook, Facebook can assign the collected information to your account. Even if you do not have a Facebook account or are not logged in when you visit our website, it is possible for Facebook to process and store your IP address and other identification data. 
+
+The legal basis for the data processing is your consent. You can revoke your consent at any time with effect for the future by calling up the cookie settings and changing your selection there. There you will also find information about the cookies processed. The legality of the processing carried out on the basis of the consent until the revocation remains unaffected.
+
+Furthermore, you can prevent the setting of cookies by adjusting the corresponding settings in your Facebook account at https://www.facebook.com/settings?tab=ads.
+
+Use of Cookies in connection with the "watch" services
+
+We use a so-called flash cookie to deliver the "watch" service.  This flash cookie contains a characteristic character string ("User ID"), which makes it possible to play back the media content without errors. The legal basis for the processing of personal data by means of technically necessary cookies is our legitimate interests. Due to the technical necessity, there is no possibility of revocation. The personal data generated by the flash cookie is anonymized immediately after website identification for the purpose of data minimization. The legal basis for the anonymization are our overriding legitimate interests. The subsequent processing of anonymized data for analysis purposes is no longer subject to the GDPR.
+
+5. DATA SHARING
+We will share your information with third parties only in the ways that are described in this Privacy Policy
+
+Third parties mentioned in this Privacy Policy: We will disclose personal data to any of the third parties mentioned in this Privacy Policy, for the purposes set out in this Privacy Policy.
+
+Group members, personnel, suppliers or subcontractors: We keep your information confidential, but may disclose it to any member of our group (which means our subsidiaries, affiliates, sister companies and our ultimate holding company and its subsidiaries and affiliates, as defined in section 1159 of the Companies Act 2006), our personnel, suppliers or subcontractors insofar as it is reasonably necessary for the purposes set out in this Privacy Policy. However, this is on the basis that they have agreed to safeguard the personal information.
+
+Merger or acquisition: If we are involved in a merger, acquisition, or sale of all or a portion of its assets, you will be notified via, account message and/or a prominent notice on our website of any change in ownership or uses of this information, as well as any choices you may have regarding this information.
+
+Required by law: In addition, we may disclose your information to the extent that we are required to do so by law (which may include to government bodies and law enforcement agencies); in connection with any legal proceedings or prospective legal proceedings; and in order to establish, exercise or defend our legal rights (including providing information to others for the purposes of fraud prevention).
+
+Enforcement: We may also disclose your personal information to third parties in order to enforce or apply the terms of agreements, to investigate potential breaches, or to protect the rights, property or safety of FACEIT, our customers, or others.
+
+6. CONSUMER CONTROL AND OPT-OUT OPTIONS
+If you do not wish to receive promotional or other marketing material from us or third parties then you can opt-out by clicking unsubscribe in any of our communications, changing your account settings in the Online Services at any time. Alternatively, you can contact us via www.support.faceit.com and let us know that you no longer wish to receive promotional or other marketing material from us or third parties.  
+
+7. YOUR RIGHTS IN RELATION TO PERSONAL DATA WHICH WE PROCESS RELATING TO YOU
+You have the following rights over the way we process personal data relating to you, as set out in the table below.  We aim to comply without undue delay, and within one month at the latest.
+
+To make a request, please let us know by sending an email to www.support.faceit.com.    
+
+Ask for a copy of data we are processing about you and have inaccuracies corrected
+
+You have the right to request a copy of the personal information we hold about you and to have any inaccuracies corrected.
+
+We will use reasonable efforts to the extent required by law to supply, correct or delete personal information held about you on our files (and with any third parties to whom it has been disclosed to).
+
+ 
+
+Object to us processing data about you
+
+You can ask us to restrict, stop processing, or to delete your personal data if:
+
+you consented to our processing the personal data, and have withdrawn that consent;
+we no longer need to process that personal data for the reason it was collected;
+we are processing that personal data because it is in the public interest or it is in order to pursue a legitimate interest of FACEIT or a third party, you don’t agree with that processing, and there is no overriding legitimate interest for us to continue processing it;
+the personal data was unlawfully processed;
+you need the personal data to be deleted in order to comply with legal obligations;
+the personal data is processed in relation to the offer of a service to a child.
+ 
+
+Obtain a machine readable copy of your personal data, which you can use with another service provider
+
+If we are processing data in order to perform our obligations to you, or because you consented, or if that processing is carried out by automated means, we will help you to move, copy or transfer your personal data to other IT systems.
+If you request, we will supply you with the relevant personal data in a commonly used, machine-readable and interoperable format. Where it is technically feasible, you can ask us to send this information directly to another IT system provider if you prefer.
+ 
+
+Make a complaint to a Supervisory Authority
+
+If you are unhappy with the way we are processing your personal data, please let us know by contacting us via the support services.
+If you do not agree with the way we have processed your data or responded to your concerns, an alternative is to submit a complaint to a Data Protection Supervisory Authority.
+ 
+
+8. DATA RETENTION
+We will hold your personal information on our systems for as long as is necessary for the relevant service, or as otherwise described in this Privacy Policy.
+
+User Content and Forum Information are retained indefinitely. If you would like us to delete your Forum account or any User Content that you have posted, please contact us via www.support.faceit.com.
+
+9. CHILDREN
+We do not use our Online Services to knowingly solicit information from or market to children under the age of 13. Our terms of use prohibit users aged under 13 years from accessing our Online Services.  In the event that we learn that we have collected personal information from a child under 13 years of age we will delete that information as quickly as possible. If you believe that we might have any information from or about a child under 13 years of age please contact us at www.support.faceit.com.  
+
+10. SECURITY
+We will take all reasonable technical and organisational precautions to prevent the loss misuse or alteration of your personal information. For example, our databases are password protected and limited to essential employees only (such as FACEIT management or employees whose main role requires system access). Please be aware that, although we endeavour to provide reasonable security for information we process and maintain, no security system can prevent all potential security breaches.
+
+11. INTERNATIONAL DATA TRANSFERS
+It is possible that your personal information may be transferred outside of the EEA by third parties referred to in the policies as being the recipients of your data, and specifically your personal information may be transferred to other companies that belong to the same company group as FACEIT. We recommend that you refer to the privacy policies and/or terms and conditions of these third parties if you are concerned about your data being transferred outside the EEA.
+
+Our databases are run using MongoDB, MySQL and Redis. Our servers are hosted AWS and Google.  We use Digital Ocean to help us manage our cloud computing.  Some files are stored using Dropbox.
+
+Where we transfer your information outside of the EEA, we have agreements in place with those parties which include standard data protection clauses adopted by a data protection regulator and approved by the European Commission to ensure that appropriate safeguards are in place to protect your personal data.  If you would like to find out more about these safeguards, please contact us at www.support.faceit.com.
+
+12. CONTACT INFORMATION
+All questions, comments or enquiries should be directed to FACEIT at www.support.faceit.com.    We will endeavour to respond to any query or questions within three business days.
+
+© 2021 FACE IT LIMITED.  All trade marks are the property of the relevant owners. All rights reserved
+
+04.05.2023, 19:33:49

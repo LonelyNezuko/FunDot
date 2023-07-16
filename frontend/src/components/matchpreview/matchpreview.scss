@@ -1,0 +1,122 @@
+@import '../../rules/scss/variables.scss';
+
+.matchpreview {
+    & + & {
+        margin-top: $margin * 2;
+    }
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    display: block;
+
+    border-radius: $borderRadius;
+    overflow: hidden;
+
+    position: relative;
+
+    & .bg {
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: #34475690;
+        backdrop-filter: blur(1.5px);
+    }
+    & .wrap {
+        z-index: $zindex_wrapper;
+        position: relative;
+
+        padding: $padding * 4;
+    }
+
+    & .game {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & h1 {
+            display: flex;
+            align-items: center;
+
+            opacity: .7;
+        }
+        & h1 + h1 {
+            margin-left: $margin * 2;
+        }
+        & h1:first-child {
+            text-transform: uppercase;
+        }
+        & h1 + h1:before {
+            display: block;
+            content: "";
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+            background-color: white;
+
+            margin-right: $margin * 2;
+        }
+    }
+
+    & .map {
+        text-align: center;
+        text-transform: uppercase;
+
+        margin-top: $margin;
+    }
+
+    & .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: $margin * 4;
+        margin-bottom: $margin * 2;
+
+        & .team {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            width: 130px;
+
+            & h1 {
+                width: 100%;
+                text-align: center;
+
+                margin-top: $margin * 3;
+                font-size: $fontsize + 1px;
+            }
+        }
+
+        & .score {
+            margin: 0 $margin * 3;
+
+            & .status {
+                display: flex;
+                align-items: center;
+            }
+            & .time {
+                margin-top: $margin * 2;
+                text-align: center;
+
+                opacity: .7;
+                font-size: $fontsize - 2px;
+            }
+
+            & h2 {
+                margin: 0 $margin * 6;
+                font-size: $fontsize + 2px;
+            }
+            & h1 {
+                font-size: $fontsize + 4px;
+            }
+        }
+    }
+}

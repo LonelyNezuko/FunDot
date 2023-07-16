@@ -1,0 +1,28 @@
+{
+    "defaultTitleName": "FunDot",
+
+    "maxDialogsSubStringLength": 29,
+    "maxDialogsNameSubStringLength": 16,
+
+    "maxOnlineStatusLength": 20,
+
+    "platforms": {
+        "twitch": {
+            "icon": "/assets/platforms/twitch/icon.png",
+            "logo": "/assets/platforms/twitch/logo.png",
+            "link": "https://www.twitch.tv/",
+            "alt": "Twitch"
+        },
+        "youtube": {
+            "icon": "/assets/platforms/youtube/icon.png",
+            "logo": "/assets/platforms/youtube/logo.png",
+            "link": "https://www.youtube.com/",
+            "alt": "YouTube"
+        }
+    },
+
+    "newsTags": {
+        "official": "Официальные новости",
+        "tournaments": "Турниры"
+    }
+}

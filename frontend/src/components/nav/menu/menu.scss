@@ -1,0 +1,44 @@
+@import '../../../rules/scss/variables.scss';
+
+#nav,
+#navLanding {
+    & .menu {
+        margin-top: $margin * 2;
+        padding-bottom: $padding * 2;
+
+        & .item + .item {
+            margin-top: $margin;
+        }
+        & .item {
+            padding: $padding * 3;
+            transition: $transition;
+
+            display: flex;
+            align-items: center;
+
+            width: 90%;
+            margin: 0 auto;
+
+            border-radius: $borderRadius;
+
+            & h1 {
+                margin-left: $margin * 2;
+                transform: translateY(1px);
+
+                font-size: $fontsize - 1px;
+            }
+            & svg {
+                font-size: $fontsize * 1.6;
+            }
+
+            &.selected:not(.disabled), &:hover:not(.disabled) {
+                background-color: $themeBlack_background;
+            }
+
+            &.disabled {
+                opacity: .5;
+                cursor: default;
+            }
+        }
+    }
+}

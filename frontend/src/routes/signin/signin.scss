@@ -1,0 +1,164 @@
+@import '../../rules/scss/variables.scss';
+
+#signin {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: $borderRadius * 2;
+    overflow: hidden;
+
+    display: flex;
+    transition: $transition;
+
+    & .home {
+        background-color: $themeBlack_domBackgroundOther;
+        padding: $padding * 28 $padding * 14;
+
+        width: 480px;
+
+        &.signup {
+            padding: $padding * 12 $padding * 14;
+        }
+
+        & .title {
+            font-size: $fontsize + 14px;
+            font-weight: bold;
+        }
+        & .desc {
+            margin-top: $margin * 1.5;
+            opacity: .6;
+
+            max-width: 340px;
+        }
+
+        & .form {
+            width: 100%;
+            margin-top: $margin * 8;
+        }
+
+        & .btns {
+            margin-top: $margin * 8;
+            & .btn {
+                width: 100%;
+
+                padding: $padding * 3 0;
+                border-radius: $borderRadius * 1.5;
+
+                margin-bottom: $margin * 4;
+            }
+            & h1 {
+                text-align: center;
+
+                &, & a {
+                    color: $themeBlack_backgroundHover;
+
+                    font-weight: bold;
+                    font-size: $fontsize - 1px;
+                }
+
+                & a {
+                    color: $themeBlack_colorHover;
+                }
+            }
+        }
+
+        & .rules {
+            margin-top: $margin * 4;
+
+            & label {
+                color: $themeBlack_backgroundHover;
+                font-weight: bold;
+                font-size: $fontsize - 1px;
+
+                line-height: $fontsize + 2px;
+            }
+            & a {
+                color: $themeBlack_color;
+            }
+        }
+    }
+
+
+    & .preview {
+        background-color: $themeBlack_background;
+
+        display: flex;
+        align-items: center;
+
+        position: relative;
+        width: 600px;
+
+        overflow: hidden;
+
+        & .wrapper {
+            display: flex;
+            align-items: center;
+
+            width: 100%;
+            transition: .5s;
+        }
+        & .wrap {
+            width: 100%;
+            min-width: 100%;
+
+            padding: $padding * 16 $padding * 20;
+            z-index: $zindex_wrapper;
+        }
+
+        & .banner {
+            & img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        & .title {
+            font-size: $fontsize + 4px;
+            text-align: center;
+            
+            margin-top: $margin * 20;
+        }
+
+        & .desc {
+            font-size: $fontsize - 1px;
+            text-align: center;
+
+            margin-top: $margin * 3;
+            color: #647f94;
+        }
+
+        & .nav {
+            display: flex;
+            align-items: center;
+
+            position: absolute;
+
+            bottom: $padding * 20;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            & button {
+                width: 6px;
+                height: 6px;
+
+                border-radius: 50%;
+                background-color: $themeBlack_btn;
+
+                opacity: .6;
+
+                & + button {
+                    margin-left: $margin * 2;
+                }
+                &.selected {
+                    background-color: white;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

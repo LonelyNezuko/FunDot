@@ -1,0 +1,153 @@
+@import '../../../rules/scss/variables.scss';
+
+.news {
+    & .comments {
+        padding: $padding * 3;
+        border-top: 1px solid #ffffff20;
+
+        & .nocomments {
+            text-align: center;
+            font-size: $fontsize - 2px;
+
+            opacity: .6;
+            padding: $padding * 4 0;
+        }
+        & .commentsShow {
+            margin-top: $margin * 2;
+            opacity: .6;
+
+            cursor: pointer;
+            user-select: none;
+        }
+        & .commentsList {
+            & .comment + .comment {
+                margin-top: $margin * 3;
+                border-top: 1px solid #ffffff20;
+
+                padding-top: $padding * 3;
+            }
+            & .comment {
+                display: flex;
+                align-items: flex-start;
+
+                & .right {
+                    width: 100%;
+                    margin-left: $margin * 2;
+
+                    & .username {
+                        display: flex;
+                        align-items: center;
+                    }
+                    & .text {
+                        
+                    }
+                    & .bottom {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        padding: 0;
+                        margin-top: $margin * 2;
+
+                        & .date {
+                            font-size: $fontsize - 2px;
+                            opacity: .6;
+
+                            display: flex;
+                            align-items: center;
+
+
+                            & span {
+                                margin-left: $margin / 2;
+                                cursor: pointer;
+
+                                display: flex;
+                                align-items: center;
+
+                                user-select: none;
+
+                                &:before {
+                                    display: block;
+                                    content: "";
+
+                                    width: 6px;
+                                    height: 6px;
+
+                                    border-radius: 50%;
+                                    background-color: white;
+
+                                    margin: 0 $margin;
+                                    transform: translateY(1px);
+                                }
+                            }
+                        }
+                        & .feedback {
+                            display: flex;
+                            align-items: center;
+
+                            & .btn + .btn {
+                                margin-left: $margin * 2;
+                            }
+                            & .btn {
+                                &.icontext {
+                                    padding: 0;
+
+                                    & svg {
+                                        font-size: $fontsize - 2px;
+                                        margin-right: $margin / 2;
+                                    }
+                                    & span {
+                                        font-size: $fontsize - 2px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    & .comments {
+                        margin-top: $margin * 2;
+                        padding-right: 0;
+
+                        & .commentsForm {
+                            margin-top: 0;
+                        }
+                        & .commentsList {
+                            & ~ .commentsShow {
+                                & ~ .commentsForm {
+                                    margin-top: $margin * 4;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & .commentsForm {
+            margin-top: $margin * 4;
+
+            display: flex;
+            align-items: flex-start;
+
+            & .forminput {
+                & .textarea {
+                    padding: $padding * 3 $padding * 4;
+                    max-height: 200px;
+                }
+            }
+            & .avatar {
+                transform: translateY(4px);
+                margin-right: $margin * 2;
+            }
+            & .action {
+                margin-left: $margin * 2;
+                transform: translateY(9px);
+
+                & svg {
+                    font-size: $fontsize + 6px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

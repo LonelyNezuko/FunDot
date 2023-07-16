@@ -1,0 +1,56 @@
+@import '../../rules/scss/variables.scss';
+
+.rank {
+    display: flex;
+    align-items: center;
+    gap: $margin * 3;
+
+    background-color: $themeBlack_domBackgroundOther;
+    border-radius: $borderRadius;
+
+    padding: $padding * 3;
+
+    & .elem {
+        width: calc(100% / 3);
+
+        & img {
+            display: block;
+            margin: 0 auto;
+
+            width: 100%;
+            height: auto;
+        }
+        & .name {
+            margin-top: $margin * 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & h1 {
+                text-align: center;
+            }
+        }
+        & .matchcounts {
+            margin-top: $margin * 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & h1 {
+                font-size: $fontsize - 2px;
+                opacity: .8;
+
+                margin-left: $margin * 2;
+                text-align: center;
+            }
+        }
+
+        &:first-child,
+        &:last-child {
+            transform: scale(.8);
+            opacity: .7;
+        }
+    }
+}

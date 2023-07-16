@@ -1,0 +1,97 @@
+$themeBlack_domBackground: var(--theme-domBackground);
+$themeBlack_domBackgroundOther: var(--theme-domBackgroundOther);
+$themeBlack_background: var(--theme-background);
+$themeBlack_backgroundHover: var(--theme-backgroundHover);
+$themeBlack_backgroundDark: var(--theme-backgroundDark);
+$themeBlack_disable: var(--theme-disable);
+$themeBlack_color: var(--theme-color);
+$themeBlack_colorBright: var(--theme-colorBright);
+$themeBlack_colorHover: var(--theme-colorHover);
+$themeBlack_colorDark: var(--theme-colorDark);
+$themeBlack_btn: var(--theme-btn);
+$themeBlack_green: var(--theme-green);
+$themeBlack_greenDark: var(--theme-greenDark);
+$themeBlack_new: var(--theme-new);
+$themeBlack_text: var(--theme-text);
+$themeBlack_textColor: var(--theme-textColor);
+
+$themeBlack_errorBG: var(--theme-errorBG);
+$themeBlack_errorText: var(--theme-errorText);
+$themeBlack_successBG: var(--theme-successBG);
+$themeBlack_successText: var(--theme-successText);
+$themeBlack_warningBG: var(--theme-warningBG);
+$themeBlack_warningText: var(--theme-warningText);
+
+// $themeBlack_domBackground: #080C25;
+// $themeBlack_domBackgroundOther: #161E35;
+// $themeBlack_background: #293659;
+// $themeBlack_backgroundHover: #354470;
+// $themeBlack_disable: #A6B2EC;
+// $themeBlack_color: #3071E7;
+// $themeBlack_colorHover: #3469ca;
+
+body {
+    --theme-domBackground: #2D384A;
+    --theme-domBackgroundOther: #0A1F32;
+    --theme-background: #344756;
+    --theme-backgroundHover: #4c667a;
+    --theme-backgroundDark: #42596a;
+    --theme-disable: #D2D2D2;
+    --theme-color: #FF4C2B;
+    --theme-colorBright: #ff7259;
+    --theme-colorHover: #e24327;
+    --theme-colorDark: #af301a;
+    --theme-btn: #939393;
+    --theme-green: #2eab2e;
+    --theme-greenDark: #248b24;
+    --theme-new: #f34f4f;
+    --theme-text: white;
+    --theme-textColor: white;
+
+    --theme-errorBG: rgb(201, 65, 65);
+    --theme-errorText: white;
+    --theme-successBG: rgb(31, 163, 38);
+    --theme-successText: white;
+    --theme-warningBG: rgb(236, 236, 67);
+    --theme-warningText: black;
+}
+body.themeWhite {
+    --theme-domBackground: #dee2e6;
+    --theme-domBackgroundOther: #ced4da;
+    --theme-background: #adb5bd;
+    --theme-backgroundHover: #e9ecef;
+    --theme-backgroundDark: #6c757d;
+    --theme-disable: #6c757d;
+    --theme-color: #FF4C2B;
+    --theme-colorBright: #ff7259;
+    --theme-colorHover: #e24327;
+    --theme-colorDark: #af301a;
+    --theme-greenDark: #248b24;
+    --theme-btn: #939393;
+    --theme-green: #2eab2e;
+    --theme-new: #f34f4f;
+    --theme-text: black;
+    --theme-textColor: white;
+
+    --theme-errorBG: rgb(201, 65, 65);
+    --theme-errorText: white;
+    --theme-successBG: rgb(31, 163, 38);
+    --theme-successText: white;
+    --theme-warningBG: rgb(236, 236, 67);
+    --theme-warningText: black;
+}
+
+
+$borderRadius: 4px;
+$padding: 4px;
+$margin: 4px;
+$transition: .3s;
+
+$fontsize: 14px;
+
+$zindex_null: 0;
+$zindex_hover: 1;
+$zindex_wrapper: 2;
+$zindex_hoverModal: 3;
+$zindex_modal: 4;
+$zindex_notify: 5;

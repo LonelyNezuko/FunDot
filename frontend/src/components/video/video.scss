@@ -1,0 +1,87 @@
+@import '../../rules/scss/variables.scss';
+
+.video {
+    min-width: calc(300px - $margin * 4);
+    width: calc(100% / 3 - $margin * 4);
+
+    margin-right: $margin * 4;
+    margin-bottom: $margin * 4;
+
+    & .background {
+        position: relative;
+
+        & .platform {
+            position: absolute;
+            
+            top: $margin * 1.5;
+            left: $margin * 1.5;
+
+            & img {
+                width: 35px;
+                height: auto;
+            }
+        }
+        & .views {
+            position: absolute;
+            
+            top: $margin * 1.5;
+            right: $margin * 1.5;
+
+            background-color: #00000060;
+            padding: $padding * 1;
+
+            border-radius: $borderRadius;
+
+            display: flex;
+            align-items: center;
+
+            & span {
+                font-size: $fontsize - 2px;
+                margin-left: $margin;
+            }
+            & svg {
+                opacity: .7;
+            }
+        }
+        & .img {
+            border-radius: $borderRadius;
+            overflow: hidden;
+
+            & img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        & .title {
+            position: absolute;
+
+            bottom: $margin * 1.5;
+            left: $margin * 1.5;
+
+            background-color: #00000060;
+            padding: $padding * 1.5 $padding * 1.5;
+
+            border-radius: $borderRadius;
+    
+            display: flex;
+            align-items: center;
+    
+            & .desc {
+                margin-left: $margin * 3;
+    
+                & h1 {
+                    font-size: $fontsize;
+                }
+                & a {
+                    opacity: .7;
+    
+                    display: flex;
+                    align-items: center;
+
+                    font-size: $fontsize - 2px;
+                }
+            }
+        }
+    }
+}

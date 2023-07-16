@@ -1,0 +1,49 @@
+@import '../../rules/scss/variables.scss';
+
+#newsPage {
+    display: flex;
+    align-items: flex-start;
+
+    width: calc(100% - 150px);
+    padding: 0 75px;
+
+    & .news {
+        &:before {
+            display: none;
+        }
+    }
+
+    & .newstype {
+        position: sticky;
+        top: $padding * 4;
+
+        width: 550px;
+
+        margin-top: $margin * 11;
+        margin-left: $margin * 2;
+        padding: $padding * 3;
+
+        background-color: $themeBlack_domBackgroundOther;
+        border-radius: $borderRadius;
+
+        & ul {
+            & a + a {
+                margin-top: $margin;
+            }
+            & a {
+                display: block;
+
+                padding: $padding * 3;
+                border-radius: $borderRadius;
+
+                cursor: pointer;
+                transition: $transition;
+
+                &.selected,
+                &:hover {
+                    background-color: $themeBlack_background;
+                }
+            }
+        }
+    }
+}

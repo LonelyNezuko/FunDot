@@ -1,0 +1,57 @@
+@import '../../rules/scss/variables.scss';
+
+#home {
+    display: flex;
+    align-items: flex-start;
+
+    width: 100%;
+    height: 100%;
+
+    & .element {
+        & header {
+            font-size: $fontsize + 13px;
+            font-weight: bold;
+        }
+    }
+
+    & .homeWrapper {
+        height: 100%;
+
+        &.central {
+            // overflow: auto;
+            // overflow-x: hidden;
+        }
+    }
+    & .homeWrapper:first-child {
+        width: calc(100% - 500px);
+        padding-right: $padding * 2;
+    }
+    & .homeWrapper:last-child {
+        // margin-left: $margin * 6;
+    }
+
+
+
+    & .videos {
+        margin-top: $margin * 10;
+        &.highlights {
+            margin-top: $margin * 2;
+        }
+        
+        .list {
+            margin-top: $margin * 2;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            width: calc(100%);
+        }
+    }
+
+
+    .lastgame {
+        .list {
+            margin-top: $margin * 2;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+@import '../../rules/scss/variables.scss';
+
+.pageNav {
+    background-color: $themeBlack_domBackgroundOther;
+
+    padding: $padding * 5;
+    border-radius: $borderRadius;
+
+    & .item + .item {
+        margin-left: $margin * 4;
+    }
+    & .item {
+        span {
+            text-transform: uppercase;
+            font-size: $fontsize + 1px;
+
+            transition: $transition;
+        }
+
+        &.selected:not(.disabled), &:hover:not(.disabled) {
+            span {
+                color: $themeBlack_color;
+            }
+        }
+
+        &.disabled {
+            opacity: .5;
+            cursor: default;
+        }
+    }
+}

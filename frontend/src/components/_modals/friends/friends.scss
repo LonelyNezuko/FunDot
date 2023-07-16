@@ -1,0 +1,270 @@
+@import '../../../rules/scss/variables.scss';
+
+.friendsModal {
+    position: absolute;
+    z-index: $zindex_hoverModal;
+
+    background-color: $themeBlack_background;
+    // padding: $padding * 2 $padding * 4;
+
+    border-radius: $borderRadius;
+    width: 360px;
+
+    transform: translateY(15px);
+    transition: $transition;
+
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+
+    cursor: default;
+    user-select: none;
+
+    &.friendsModalShow {
+        opacity: 1;
+        visibility: visible;
+        z-index: $zindex_hoverModal;
+        transform: none;
+    }
+
+    &:before {
+        position: absolute;
+
+        display: block;
+        content: "";
+
+        top: 10px;
+        left: 1px;
+
+        transform: translateX(-50%) rotate(45deg);
+
+        width: 15px;
+        height: 15px;
+        
+        background-color: inherit;
+        z-index: -1;
+
+        border-radius: $borderRadius - 2px;
+    }
+
+    .header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        & .type {
+            display: flex;
+            justify-content: center;
+
+            padding: $padding * 3 $padding * 4;
+
+            position: relative;
+            width: 100%;
+
+            cursor: pointer;
+            transition: $transition;
+
+            & div {
+                display: flex;
+                align-items: center;
+            }
+            & .btn {
+                background-color: $themeBlack_btn;
+                white-space: nowrap;
+
+                margin-left: $margin * 2;
+                font-size: $fontsize - 2px;
+            }
+
+            &:after {
+                position: absolute;
+
+                display: block;
+                content: "";
+
+                width: 100%;
+                height: 2px;
+
+                bottom: 0;
+                left: 0;
+
+                background-color: $themeBlack_btn;
+                transition: $transition;
+            }
+            &.selected {
+                &:after,
+                & .btn {
+                    background-color: $themeBlack_color;
+                }
+
+                &:last-child:after,
+                &:last-child .btn {
+                    background-color: $themeBlack_green;
+                }
+            }
+        }
+    }
+
+    & .bodyWrapper {
+        overflow: hidden;
+    }
+    & .bodyWrap {
+        display: flex;
+    }
+    .body {
+        min-width: 100%;
+        width: 100%;
+
+        margin: $margin * 2 0;
+        padding: $padding * 2 $padding * 4;
+
+        max-height: 600px;
+        overflow: auto;
+
+        transition: $transition;
+
+        & .friend + .friend {
+            margin-top: $margin * 4;
+            padding-top: $padding * 4;
+
+            position: relative;
+            &:after {
+                position: absolute;
+
+                display: block;
+                content: "";
+
+                width: 100%;
+                height: 1px;
+
+                background-color: white;
+                opacity: .15;
+
+                top: 0;
+                left: 50%;
+
+                transform: translateX(-50%);
+            }
+        }
+        & .friend {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            & .split {
+                display: flex;
+                align-items: center;
+            }
+
+
+            & .desc {
+                margin-left: $margin * 3;
+
+                & .username {
+                    font-size: $fontsize + 2px;
+
+                    display: flex;
+                    align-items: center;
+                }
+                & .info {
+                    opacity: .6;
+                    font-size: $fontsize - 2px;
+
+                    margin-top: $margin;
+
+                    & a {
+                        font-size: $fontsize - 2px;
+                        border-bottom: 1px solid white;
+                        font-weight: bold;
+                    }
+                }
+
+                & .action-i {
+                    margin-top: $margin;
+
+                    display: flex;
+                    align-items: center;
+
+                    & h1 {
+                        margin-right: $margin * 2;
+                    }
+
+                    & .btn + .btn {
+                        margin-left: $margin;
+                    }
+
+                    & .btn {
+                        &:last-child {
+                            background-color: $themeBlack_btn;
+                        }
+                        &:first-child {
+                            background-color: $themeBlack_green;
+                        }
+
+                        &:hover {
+                            opacity: .8;
+                        }
+                    }
+                }
+            }
+
+            & .action {
+                position: relative;
+                border-radius: $borderRadius;
+
+                background-color: $themeBlack_backgroundHover;
+                overflow: hidden;
+
+                &:hover {
+                    border-radius: 0 $borderRadius $borderRadius 0;
+                    overflow: visible;
+                }
+
+                & .btn.main {
+                    border-radius: 0
+                }
+                & section {
+                    display: flex;
+                    align-items: center;
+
+                    position: absolute;
+
+                    right: 100%;
+                    top: 0;
+
+                    background-color: $themeBlack_backgroundDark;
+                    border-radius: $borderRadius 0 0 $borderRadius;
+
+                    transition: right $transition;
+                    overflow: hidden;
+
+                    & .btn:hover {
+                        background-color: $themeBlack_backgroundHover;
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+
+        & .empty {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            opacity: .6;
+            padding: $padding * 14 0;
+
+            & h1 {
+                width: 100%;
+                text-align: center;
+
+                margin-top: $margin * 3;
+                font-size: $fontsize + 2px;
+            }
+            & img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    }
+}

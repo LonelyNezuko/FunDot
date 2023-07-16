@@ -1,0 +1,127 @@
+@import '../../rules/scss/variables.scss';
+
+#online,
+#onlineLanding {
+    margin-top: $margin * 3;
+    border-radius: $borderRadius;
+
+    background-color: $themeBlack_domBackgroundOther;
+    padding: $padding * 2;
+
+    max-height: 300px;
+    width: 200px;
+
+    & header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & span {
+            font-size: $fontsize - 3px;
+            opacity: .7;
+            transform: translateY(2px)
+        }
+    }
+
+    & .list {
+        max-height: 300px - 14px - $padding * 2 - $margin * 2 - $padding * 2;
+
+        overflow: hidden;
+        overflow-y: auto;
+        
+        padding-top: $padding * 2;
+        margin-top: $margin * 2;
+        
+        &::-webkit-scrollbar {
+            display: none
+        }
+
+        & .item {
+            display: flex;
+            align-items: center;
+
+            padding: $padding * 2;
+            transition: $transition;
+
+            border-radius: $borderRadius;
+
+            & h1 {
+                margin-left: $margin * 2;
+
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+
+                & h2 {
+                    font-size: $fontsize - 3px;
+                    opacity: .7;
+
+                    margin-top: $margin;
+                    width: 100%;
+
+                    & a {
+                        font-size: $fontsize - 3px;
+                        border-bottom: 1px solid white;
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: $themeBlack_background;
+            }
+        }
+    }
+}
+
+
+#onlineLanding {
+    & header {
+        & h1 {
+            width: 80px;
+            height: 20px;
+
+            background-color: $themeBlack_background;
+            border-radius: $borderRadius;
+        }
+        & span {
+            width: 60px;
+            height: 16px;
+
+            background-color: $themeBlack_background;
+            border-radius: $borderRadius;
+
+            transform: none;
+        }
+    }
+
+    & .list {
+        & .item {
+            & .image {
+                width: 30px;
+                min-width: 30px;
+                height: 30px;
+
+                border-radius: 50%;
+                background-color: $themeBlack_background;
+            }
+            & h1 {
+                display: block;
+                & div, & span {
+                    width: 80px;
+                    height: 16px;
+
+                    background-color: $themeBlack_background;
+                    border-radius: $borderRadius;
+                }
+
+                & span {
+                    display: block;
+                    margin-top: $margin;
+
+                    width: 50px;
+                    height: 14px;
+                }
+            }
+        }
+    }
+}

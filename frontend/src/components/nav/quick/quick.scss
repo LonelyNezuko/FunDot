@@ -1,0 +1,73 @@
+@import '../../../rules/scss/variables.scss';
+
+#nav,
+#navLanding {
+	& .quick {
+        padding: 0 $padding * 2;
+        padding-top: $padding * 2;
+
+        &, & .elem {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        & .elem {
+            & .quickItem + .quickItem {
+                margin-left: $margin;
+            }
+
+            & .quickItem {
+                position: relative;
+                &[data-new] {
+                    &:before {
+                        position: absolute;
+
+                        display: block;
+                        content: "";
+
+                        width: 8px;
+                        height: 8px;
+
+                        background-color: $themeBlack_new;
+                        border-radius: 50%;
+
+                        bottom: 2px;
+                        right: 2px;
+
+                        transition: $transition;
+                    }
+                }
+
+                & .notifyModal {
+                    bottom: auto;
+                    right: auto;
+
+                    left: calc(100% + 20px);
+                    top: -2.5px;
+                }
+                & .friendsModal {
+                    bottom: auto;
+                    right: auto;
+
+                    left: calc(100% + 20px);
+                    top: -2.5px;
+                }
+
+                &:after {
+                    position: absolute;
+
+                    display: block;
+                    content: "";
+
+                    width: 20px;
+                    height: 100%;
+
+                    background-color: transparent;
+
+                    left: 100%;
+                    top: 0;
+                }
+            }
+        }
+    }
+}
