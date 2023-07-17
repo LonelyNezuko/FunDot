@@ -64,14 +64,14 @@ function Comment({ item, onGoAns }) {
         <div className="comment">
             <div className="left">
                 <Link to={`/account/${item.author.link}`}>
-                    <Avatar type="min" image={item.author.image.img} size={item.author.image.size} position={item.author.image.position} />
+                    <Avatar type="min" image={item.author.avatar.image} size={item.author.avatar.size} position={item.author.avatar.position} />
                 </Link>
             </div>
             <div className="right">
                 <Link to={`/account/${item.author.link}`} className="username link color">
                     {item.author.username}
-                    {item.author.verified ? (<span className="verified"></span>) : ''}
-                    {item.author.bot ? (<span className="bot"></span>) : ''}
+                    {item.author.isVerified ? (<span className="verified"></span>) : ''}
+                    {item.author.isBot ? (<span className="bot"></span>) : ''}
                 </Link>
                 <div className="text">
                     <h6>{item.body.text}</h6>

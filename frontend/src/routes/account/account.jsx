@@ -150,7 +150,24 @@ function AccountPageHome() {
         { author: {
             id: 1,
             username: 'LonelyNezuko',
-            image: { img: 'https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg', size: 200 },
+            avatar: { image: 'https://i.ibb.co/2cgHpWC/nezu5-2.jpg', size: 100, position: { x: 0, y: 0 } },
+            verified: true
+        }, date: new Date(), body: {
+            text: 'Делаю новости, а чем вы занимаетесь?',
+            attached: [
+                { type: 'img', src: 'https://aniyuki.com/wp-content/uploads/2021/05/aniyuki-nezuko-91.jpg' }
+            ]
+        }, feedback: [ 128, 3, 0, 252 ], userInfo: {
+            like: true,
+            dislike: false,
+            view: false,
+            subscribed: false
+        }, hidden: false, blocked: false, ageLimit: false, isPin: false, forSubs: false, forFriends: false,
+        comments: [], tags: '#job #news' },
+        { author: {
+            id: 1,
+            username: 'LonelyNezuko',
+            avatar: { image: 'https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg', size: 200 },
             verified: true
         }, date: new Date(), body: {
             text: 'Привет, это первая новость здесь. Поставь лайк :)',
@@ -164,34 +181,34 @@ function AccountPageHome() {
             dislike: false,
             view: false,
             subscribed: false
-        }, hided: false, blocked: false, ageLimit: false, isPin: true, forSubs: true,
+        }, hidden: false, blocked: false, ageLimit: false, isPin: true, forSubs: true,
         comments: [
             { author: {
                 id: 1,
                 username: 'LonelyNezuko',
-                image: { img: 'https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg', size: 200 },
+                avatar: { image: 'https://i.ibb.co/2cgHpWC/nezu5-2.jpg', size: 100, position: { x: 0, y: 0 } },
                 verified: true
             }, body: { text: 'Привет, это я, твой единственный подпищек', attached: {} }, date: new Date(), feedback: [0, 0], userInfo: { like: false, dislike: false }, answers: [
                 { author: {
                     id: 1,
                     username: 'LonelyNezuko',
-                    image: { img: 'https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg', size: 200 },
+                    avatar: { image: 'https://i.ibb.co/2cgHpWC/nezu5-2.jpg', size: 100, position: { x: 0, y: 0 } },
                     verified: true
                 }, body: { text: 'Да, я знаю, спасибо', attached: {} }, date: new Date(), feedback: [0, 0], userInfo: { like: false, dislike: false } },
                 { author: {
                     id: 1,
                     username: 'LonelyNezuko',
-                    image: { img: 'https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg', size: 200 },
+                    avatar: { image: 'https://i.ibb.co/2cgHpWC/nezu5-2.jpg', size: 100, position: { x: 0, y: 0 } },
                     verified: true
                 }, body: { text: 'Да, я знаю, спасибо', attached: {} }, date: new Date(), feedback: [0, 0], userInfo: { like: false, dislike: false } }
             ] },
             { author: {
                 id: 1,
                 username: 'LonelyNezuko',
-                image: { img: 'https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg', size: 200 },
+                avatar: { image: 'https://i.ibb.co/2cgHpWC/nezu5-2.jpg', size: 100, position: { x: 0, y: 0 } },
                 verified: true
             }, body: { text: 'Привет, это я, твой единственный подпищек', attached: {} }, date: new Date(), feedback: [0, 0], userInfo: { like: false, dislike: false }, answers: [] }
-        ] },
+        ], tags: '#top official tournaments' },
     ])
     const [ socials, setSocials ] = React.useState({
         vk: 'myangelnezuko',

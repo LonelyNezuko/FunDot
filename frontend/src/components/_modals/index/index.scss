@@ -147,6 +147,10 @@
 
     & .body {
         margin-top: $margin * 4;
+
+        max-height: 700px;
+        overflow: auto;
+
         & .forminput {
             & label {
                 font-size: $fontsize;

@@ -100,8 +100,9 @@ news = {
         view: false, // просмотрел ли новость
         subscribed: false // подписан ли на автора
     },
-    hided: false, // скрыл ли новость
+    hidden: false, // скрыл ли новость
     blocked: false, // заблокировал ли автора
+    reported: false, // отправлена ли жалоба на автора (только вместе с hidden)
     ageLimit: false, // есть ли ограничения по возрасту
     comments: [] // комментарии, comment
 } // Информация о новости

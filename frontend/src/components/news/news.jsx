@@ -9,6 +9,8 @@ import intToString from '../../modules/intToString'
 import Avatar from '../avatar/avatar'
 import Modal from '../_modals/index/index'
 import SortMedia from "../../modules/sortMedia"
+import FormAttach from '../formattach'
+import Select from '../select'
 
 import './news.scss'
 
@@ -42,8 +44,16 @@ export default function News(props) {
     }, [props.news])
 
     const onNews = {
+        _getNews: () => {
+            let path = props.id ? `#${props.id} ` : ''
+            path += '.list'
+
+            const news = JSON.parse($(path).attr('data-news'))
+            return news
+        },
+
         like: id => {
-            const news = JSON.parse($(props.id && `#${props.id} ` + '.list').attr('data-news'))
+            const news = onNews._getNews()
             const item = news[id]
 
             item.userInfo.like = !item.userInfo.like
@@ -58,12 +68,11 @@ export default function News(props) {
 
             news[id] = item
             setNews(news)
+
+            // api
         },
         dislike: id => {
-            console.log(props.id && `#${props.id} ` + '.list')
-            console.log($(props.id && `#${props.id} ` + '.list'))
-
-            const news = JSON.parse($(props.id && `#${props.id} ` + '.list').attr('data-news'))
+            const news = onNews._getNews()
             const item = news[id]
 
             item.userInfo.dislike = !item.userInfo.dislike
@@ -78,36 +87,118 @@ export default function News(props) {
 
             news[id] = item
             setNews(news)
+
+            // api
         },
         ageLimit: id => {
-            const news = JSON.parse($(props.id && `#${props.id} ` + '.list').attr('data-news'))
+            const news = onNews._getNews()
+
+            news[id].ageLimit = false
+            setNews(news)
+
+            // api
+        },
+        deletePost: (id, status = false) => {
+            if(!status) { // show modal
+                setDeletePost({
+                    toggle: true,
+                    postid: id
+                })
+            }
+            else { // delete
+                setDeletePost({ toggle: false, id: -1 })
+
+                // api
+            }
+        },
+        pin: id => {
+            const news = onNews._getNews()
             const item = news[id]
 
-            item.ageLimit = false
+            if(!item.isPin) {
+                news.map(item => {
+                    if(item.isPin) item.isPin = false
+                })
+            }
+
+            item.isPin = !item.isPin
+            news[id] = item
+
+            setNews(news)
+
+            // api
+        },
+
+        hide: (id, status) => {
+            const news = onNews._getNews()
+            const item = news[id]
+
+            item.reported = false
+            item.hidden = status
 
             news[id] = item
-            setNews(news)
-        },
-        deletePost: (id, status) => {
-            if(status === undefined) {
-                
-            }
-            else {
+            news.map(elem => {
+                if(elem.author.id === item.author.id) elem.hidden = status
+            })
 
-            }
+            setNews(news)
+
+            // api
+        },
+        block: (id, status) => {
+            const news = onNews._getNews()
+            const item = news[id]
+            
+            item.reported = false
+            item.blocked = status
+            
+            news[id] = item
+            news.map(elem => {
+                if(elem.author.id === item.author.id) elem.blocked = status
+            })
+
+            setNews(news)
+
+            // api
+        },
+        report: id => {
+            const news = onNews._getNews()
+            
+            news[id].hidden = true
+            news[id].reported = true
+
+            setNews(news)
+
+            // api
         }
     }
 
+    // add new post
     const [ addForm, setAddForm ] = React.useState({
-        isShow: false
+        text: '',
+
+        access: 'public',
+        notify: 'yes',
+
+        files: []
     })
-    const [ modals, setModals ] = React.useState({
-        delete: false
+    const [ addFormShow, setAddFormShow ] = React.useState(false)
+    function onAddFormSubmit() {
+        if(!addForm.text.length)return
+
+        // api
+    }
+
+
+    // delete post
+    const [ deletePost, setDeletePost ] = React.useState({
+        toggle: false,
+        postid: -1
     })
 
     return (
         <section className="news" id={props.id}>
-            {modals.delete ? (
+            {deletePost.toggle ? (
                 <Modal
                     toggle={true}
 
@@ -117,12 +208,15 @@ export default function News(props) {
 
                     body={(
                         <div className="news">
-                            <div className="list" style={{marginTop: '0'}}>
-                                <NewsRender item={news[modals.delete.id]} i={modals.delete.id} props={props} preview={true} />
+                            <div className="list" style={{margin: '0', padding: '0'}}>
+                                <NewsRender item={news[deletePost.postid]} i={deletePost.postid} props={props} preview={true} />
                             </div>
                         </div>
                     )}
                     buttons={['Нет', 'Да']}
+
+                    onClose={() => setDeletePost({ toggle: false, id: -1 })}
+                    onClick={() => onNews.deletePost(deletePost.id, true)}
                 />
             ) : ''}
 
@@ -130,14 +224,17 @@ export default function News(props) {
             <header className="title">{props.title || 'Лента новостей'}</header>
 
             {props.addform ? (
-                <div className={`newpost ${addForm.isShow ? 'show' : ''}`}>
+                <div className={`newpost ${addFormShow ? 'show' : ''}`}>
                     <div className="text">
                         <div className="form">
                             <Avatar type="min" image='https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg' size='200' />
                             <div className="forminput forminputtextarea">
-                                <div onInput={event => {
-                                    if(event.target.textContent.length) setAddForm({ ...addForm, isShow: true })
-                                    else setAddForm({ ...addForm, isShow: false })
+                                <div id="newsNewPostText" onInput={event => {
+                                    if(event.target.textContent.length
+                                        || addForm.files.length) setAddFormShow(true)
+                                    else setAddFormShow(false)
+
+                                    setAddForm({ ...addForm, text: event.target.textContent })
                                 }} className="textarea" data-placeholder="Что-то новенькое? Поделитесь этим" contentEditable={true} aria-multiline="true"></div>
                             </div>
                         </div>
@@ -145,36 +242,54 @@ export default function News(props) {
                     <div className="settings">
                         <div className="form flex">
                             <div className="forminput forminputchoice">
-                                <div className="select" data-value="public" data-title="Доступный всем">
-                                    <ul>
-                                        <li data-value="public" className="selected">Доступный всем</li>
-                                        <li data-value="privatefriend">Только для друзей</li>
-                                        <li data-value="privatesubs">Только для подписчиков</li>
-                                    </ul>
-                                </div>
+                                <Select _type={addForm.access} _list={[
+                                    [ 'public', 'Доступный всем' ],
+                                    [ 'private', 'Для друзей и подписчиков' ],
+                                    [ 'privatefriends', 'Только для друзей' ],
+                                    [ 'privatesubs', 'Только для подписчиков' ]
+                                ]} onChange={event => {
+                                    setAddForm({ ...addForm, access: event[0] })
+                                }} />
                             </div>
                             <div className="forminput forminputchoice">
-                                <div className="select" data-value="yes" data-title="Получать уведомления">
-                                    <ul>
-                                        <li data-value="yes" className="selected">Получать уведомления</li>
-                                        <li data-value="no">Не получать уведомления</li>
-                                    </ul>
-                                </div>
+                                <Select _type={addForm.notify} _list={[
+                                    [ 'yes', 'Получать уведомления' ],
+                                    [ 'no', 'Не получать уведомления' ]
+                                ]} onChange={event => {
+                                    setAddForm({ ...addForm, notify: event[0] })
+                                }} />
                             </div>
                         </div>
                     </div>
-                    {/* <div className="attached">
-                        <div className="item photo">
-                            <img src="https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg" alt="Image" />
-                        </div>
-                    </div> */}
+                    <FormAttach id="newsNewPost" maxFiles={10} _accept="image/*, videos/*, text/*" _multiple={true} _files={addForm.files} onLoad={event => {
+                        const filesTemp = [...addForm.files]
+
+                        event.map(item => {
+                            if(item.type.indexOf('image/') === 0
+                                || item.type.indexOf('text/') === 0
+                                || item.type.indexOf('videos/') === 0) filesTemp.push(item)
+                        })
+                        setAddForm({ ...addForm, files: filesTemp })
+                    }} onDelete={event => {
+                        const filesTemp = [...addForm.files]
+                        let index = -1
+
+                        filesTemp.filter((file, i) => {
+                            if(file === event) {
+                                return index = i
+                            }
+                        })
+
+                        if(index != -1) filesTemp.splice(index, 1)
+                        setAddForm({ ...addForm, files: filesTemp })
+
+                        if($('#newsNewPostText')[0].textContent.length
+                            || filesTemp.length) setAddFormShow(true)
+                        else setAddFormShow(false)
+                    }} />
                     <div className="buttons">
-                        <div className="attach">
-                            <button className="btn icon transparent">
-                                <MdInsertPhoto />
-                            </button>
-                        </div>
-                        <button className="btn">Выложить</button>
+                        <span style={{display: 'block'}}>&nbsp;</span>
+                        <button className="btn" onClick={() => onAddFormSubmit()}>Выложить</button>
                     </div>
                 </div>
             ) : ''}
@@ -185,26 +300,44 @@ export default function News(props) {
                 <h1>Пока ничего</h1>
             </div>
             ) : ''}
-            <div className="list" data-news={JSON.stringify(news)}>
-                {news.filter(elem => { return elem.isPin }).map((item, i) => {
-                    if(item.hided) {
-                        return <NewsHided item={item} i={i} onNews={onNews} />
-                    }
-                    if(item.blocked) {
-                        return <NewsBlocked item={item} i={i} onNews={onNews} />
-                    }
-                    return <NewsRender item={item} i={i} onNews={onNews} props={props} />
-                })}
-                {news.filter(elem => { return !elem.isPin }).map((item, i) => {
-                    if(item.hided) {
-                        return <NewsHided item={item} i={i} onNews={onNews} />
-                    }
-                    if(item.blocked) {
-                        return <NewsBlocked item={item} i={i} onNews={onNews} />
-                    }
-                    return <NewsRender item={item} i={i} onNews={onNews} props={props} />
-                })}
-            </div>
+            {props.account ? (
+                <div className="list" data-news={JSON.stringify(news)}>
+                    {news.map((item, i) => {
+                        if(!item.isPin)return
+                        
+                        if(item.hidden) {
+                            return <NewsHidden item={item} i={i} onNews={onNews} />
+                        }
+                        if(item.blocked) {
+                            return <NewsBlocked item={item} i={i} onNews={onNews} />
+                        }
+                        return <NewsRender item={item} i={i} onNews={onNews} props={props} />
+                    })}
+                    {news.map((item, i) => {
+                        if(item.isPin)return
+
+                        if(item.hidden) {
+                            return <NewsHidden item={item} i={i} onNews={onNews} />
+                        }
+                        if(item.blocked) {
+                            return <NewsBlocked item={item} i={i} onNews={onNews} />
+                        }
+                        return <NewsRender item={item} i={i} onNews={onNews} props={props} />
+                    })}
+                </div>
+            ) : (
+                <div className="list" data-news={JSON.stringify(news)}>
+                    {news.map((item, i) => {
+                        if(item.hidden) {
+                            return <NewsHidden item={item} i={i} onNews={onNews} />
+                        }
+                        if(item.blocked) {
+                            return <NewsBlocked item={item} i={i} onNews={onNews} />
+                        }
+                        return <NewsRender item={item} i={i} onNews={onNews} props={props} />
+                    })}
+                </div>
+            )}
         </section>
     )
 }
@@ -229,13 +362,15 @@ function NewsRender({item, i, onNews, props, preview}) {
             <div className="itemHeader">
                 <section style={{alignItems: !item.tags ? 'center' : 'flex-start'}}>
                     <Link to={`/account/${item.author.id}`}>
-                        <Avatar image={item.author.image.img} position={item.author.image.position} size={item.author.image.size} />
+                        <Avatar image={item.author.avatar.image} position={item.author.avatar.position} size={item.author.avatar.size} />
                     </Link>
                     <h1>
-                        <Link className="link" to={`/account/${item.author.id}`}>{item.author.username} {item.author.verified ? (<span className="verified"></span>) : ''}{item.author.bot ? (<span className="bot"></span>) : ''}</Link>
+                        <Link className="link" to={`/account/${item.author.id}`}>{item.author.username} {item.author.isVerified ? (<span className="verified"></span>) : ''}{item.author.isBot ? (<span className="bot"></span>) : ''}</Link>
                         <h3>
                             {Moment(item.date).fromNow()}
-                            {item.isPin ? (<AiFillPushpin />) : ''}
+                            {props.account ? (
+                                item.isPin ? (<AiFillPushpin />) : ''
+                            ) : ''}
                             {item.forSubs ? (<span>только для подписчиков</span>) : ''}
                         </h3>
                         {item.tags ? (
@@ -254,9 +389,9 @@ function NewsRender({item, i, onNews, props, preview}) {
                         <button className="btn icon focus">
                             <HiDotsVertical />
                             <div className="submenu">
-                                <span>Пожаловаться</span>
-                                <span onClick={() => onNews.hided(i, true)}>Скрыть новости польз.</span>
-                                <span onClick={() => onNews.blocked(i, true)}>Заблокировать польз.</span>
+                                <span onClick={() => onNews.report(i)}>Пожаловаться</span>
+                                <span onClick={() => onNews.hide(i, true)}>Скрыть новости польз.</span>
+                                <span onClick={() => onNews.block(i, true)}>Заблокировать польз.</span>
                             </div>
                         </button>
                     </section>
@@ -266,7 +401,7 @@ function NewsRender({item, i, onNews, props, preview}) {
                         <button className="btn icon focus">
                             <HiDotsVertical />
                             <div className="submenu">
-                                <span>{item.isPin ? 'Открепить' : 'Закрепить'}</span>
+                                <span onClick={() => onNews.pin(i)}>{item.isPin ? 'Открепить' : 'Закрепить'}</span>
                                 <span onClick={() => onNews.deletePost(i)}>Удалить пост</span>
                             </div>
                         </button>
@@ -360,24 +495,38 @@ function NewsBlocked({item, i, onNews}) {
                 <section className="svg">
                     <BiBlock />
                 </section>
-                <section className="text" style={{textAlign: 'center'}}>Вы успешно заблокировали пользователя <Link className="link" to={`/account/${item.author.id}`}>{item.author.username}</Link></section>
+                <section className="text" style={{textAlign: 'center'}}>
+                    Вы заблокировали пользователя <Link className="link color" to={`/account/${item.author.id}`}>{item.author.username}</Link>
+                </section>
                 <section className="buttons">
-                    <button onClick={() => onNews.blocked(i, false)} className="btn">Разблокировать</button>
+                    <button onClick={() => onNews.block(i, false)} className="btn">Разблокировать</button>
                 </section>
             </div>
         </div>
     )
 }
-function NewsHided({item, i, onNews}) {
+function NewsHidden({item, i, onNews}) {
     return (
         <div className="item" key={i}>
             <div className="body">
                 <section className="svg">
                     <BiHide />
                 </section>
-                <section className="text" style={{textAlign: 'center'}}>Вы больше не будете видеть новости от <Link className="link" to={`/account/${item.author.id}`}>{item.author.username}</Link></section>
+                <section className="text" style={{textAlign: 'center'}}>
+                    {item.reported ? (
+                        <>
+                            Спасибо за отправленную жалобу на пользователя <Link className="link color" to={`/account/${item.author.id}`}>{item.author.username}</Link>
+                            <br />
+                            Мы рассмотрим ее как можно скорее и, если жалоба будет оправдана, мы примем меры
+                        </>
+                    ) : (
+                        <>Вы больше не будете видеть новости от <Link className="link color" to={`/account/${item.author.id}`}>{item.author.username}</Link></>
+                    )}
+                </section>
                 <section className="buttons">
-                    <button onClick={() => onNews.hided(i, false)} className="btn">Показывать новости</button>
+                    <button onClick={() => onNews.hide(i, false)} className="btn">
+                        {item.reported ? 'Снова показать новость' : 'Показывать новости'}
+                    </button>
                 </section>
             </div>
         </div>

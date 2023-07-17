@@ -19,7 +19,7 @@ export default function Select({
                 setSelected(item)
             }
         })
-    }, [_type, type])
+    }, [_type, type, _list])
 
     const [ list, setList ] = React.useState([])
     React.useEffect(() => {

@@ -12,12 +12,12 @@ import { AiOutlineFile } from 'react-icons/ai'
 
 export default function FormAttach({
     id,
-    name,
+    name = 'Вложения',
 
     maxVisualFiles,
     maxFiles,
 
-    maxSize,
+    maxSize = 20971520,
 
     _files = [],
 
@@ -33,7 +33,7 @@ export default function FormAttach({
 
     return (
         <div className="forminput formattach">
-            <label>{name || 'Вложения'}</label>
+            <label>{name}</label>
             <div className="files">
                 {files.map((item, i) => {
                     if(maxVisualFiles && i >= maxVisualFiles)return ''

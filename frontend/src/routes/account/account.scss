@@ -134,6 +134,9 @@
                             padding: $padding * 2;
                             width: 100%;
 
+                            position: relative;
+                            z-index: $zindex_hoverModal;
+
                             &:hover {
                                 background-color: $themeBlack_colorHover;
                             }

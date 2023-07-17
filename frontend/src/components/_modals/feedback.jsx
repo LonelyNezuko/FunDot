@@ -124,7 +124,7 @@ export default function Feedback() {
                                 <label for="feedbackDesc">{type === 'other' ? 'Опишите, что конкретно нарушил игрок' : 'Можете добавить конкретики (необзятельно)'}</label>
                                 <textarea value={desc} onChange={event => setDesc(event.target.value)} id="feedbackDesc" rows="4"></textarea>
                             </div>
-                            <FormAttach maxFiles={5} maxSize={20971520} id='reportFiles' name="Доказательства (Не обязательно)" _multiple={true} _accept="image/*, text/*, videos/*" _files={files} onLoad={_files => {
+                            <FormAttach maxFiles={5} id='reportFiles' name="Доказательства (Не обязательно)" _multiple={true} _accept="image/*, text/*, videos/*" _files={files} onLoad={_files => {
                                 const filesTemp = [...files]
 
                                 _files.map(item => {
