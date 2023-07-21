@@ -1,5 +1,66 @@
 @import '../../rules/scss/variables.scss';
 
+#accountLandingBodyStats {
+    & .home {
+        & .stats {
+            & .title {
+                & h2 {
+                    width: 220px;
+                    height: 25px;
+
+                    background-color: $themeBlack_background;
+                    border-radius: $borderRadius;
+                }
+                & span {
+                    width: 100px;
+                    height: 17px;
+
+                    display: block;
+
+                    background-color: $themeBlack_background;
+                    border-radius: $borderRadius;
+                }
+            }
+        }
+    }
+}
+#accountLandingHeader {
+    & header {
+        & .accountAvatar {
+            & .landingAvatar {
+                width: 160px;
+                height: 160px;
+    
+                background-color: $themeBlack_background;
+                border-radius: 50%;
+            }
+            & .title {
+                & h1 {
+                    width: 140px;
+                    height: 27px;
+
+                    background-color: $themeBlack_background;
+                    border-radius: $borderRadius;
+                }
+                & h2 {
+                    width: 100px;
+                    height: 15px;
+
+                    background-color: $themeBlack_background;
+                    border-radius: $borderRadius / 1.5;
+                }
+            }
+        }
+        & .nav {
+            & .item {
+                width: 130px;
+
+                background-color: $themeBlack_background;
+                border-radius: $borderRadius;
+            }
+        }
+    }
+}
 #account {
     & .header {
         position: relative;
@@ -68,7 +129,7 @@
                 margin-top: $margin * 2;
                 position: relative;
 
-                transform: translateX($margin * 4);
+                // transform: translateX($margin * 4);
 
                 & .title {
                     & h1 {
@@ -197,8 +258,8 @@
 
                 height: 40px;
                 
-                &.selected:not(.blocked),
-                &:hover:not(.blocked) {
+                &.selected:not(.blocked):not(.landingAnimate),
+                &:hover:not(.blocked):not(.landingAnimate) {
                     background-color: $themeBlack_color;
                     color: $themeBlack_textColor;
 

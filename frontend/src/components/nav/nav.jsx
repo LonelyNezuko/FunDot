@@ -1,5 +1,7 @@
 import React from 'react'
+import $ from 'jquery'
 import { Link, useLocation } from "react-router-dom"
+import Cookies from 'universal-cookie'
 
 import './nav.scss'
 
@@ -9,27 +11,27 @@ import Team from './team/team'
 import Menu from './menu/menu'
 import Quick from './quick/quick'
 
+import NavLanding from './landing'
+
 export default function Nav() {
+	const [ landing, setLanding ] = React.useState(true)
+	const cookies = new Cookies()
+
 	const [ account, setAccount ] = React.useState({
 		username: 'LonelyNezuko',
 		id: 1,
 		link: 'lonelynezuko',
-		isVerified: true,
-		isBot: false,
 		avatar: {
 			image: 'https://i.ibb.co/2cgHpWC/nezu5-2.jpg',
 			size: 100,
 			position: { x: 0, y: 0 }
-		},
-		background: { image: 'https://rare-gallery.com/uploads/posts/955295-anime-anime-girls-digital-art-artwork-2D-portrait.jpg' },
-		status: {
-			type: 'afk'
 		},
 		isInTeam: {
 			teamid: 258173,
 			team: {}
 		}
 	})
+
 	const [ team, setTeam ] = React.useState({
 		name: 'LonelyNezuko',
 	
@@ -121,28 +123,44 @@ export default function Nav() {
 	const [ friendsToggle, setFriendsToggle ] = React.useState(false)
 	const [ friendsAll, setFriendsAll ] = React.useState(5829)
 
+	React.useMemo(() => {
+		const jwt = cookies.get('jsonwebtoken')
+		if(!jwt)return window.location = '/signin'
+
+		$.ajax({
+			url: '/api/user/nav',
+			headers: { jwt }
+		}).done(results => {
+			if(results.type === 'error') {
+				if(results.statusCode === 401)return window.location = '/signin'
+			}
+			else {
+				setAccount(results.message)
+				setLanding(false)
+			}
+		}).fail(err => {
+			notify('Упс. Кажется где-то ошибка (подробнее в консоли)')
+		})
+	}, [])
+
 	const location = useLocation()
 	return (
 		<div id="nav">
-			<div className="wrapper">
-				<Quick />
-				<section className="account">
-					<div className="image">
-						<Link to={`/account/${account.link}`} style={{margin: '0'}}>
-							<Avatar image={account.avatar.image} type='medium' size={account.avatar.size} position={account.avatar.position} />
-						</Link>
-						<Link to={`/account/${account.link}`}>{account.username}</Link>
-					</div>
-				</section>
-				<Team account={account} friends={friends} />
-				{/* <section className="game">
-					<h1>Игра</h1>
-					<div>
-
-					</div>
-				</section> */}
-				<Menu />
-			</div>
+			{landing ? (<NavLanding />) : (
+				<div className="wrapper">
+					<Quick />
+					<section className="account">
+						<div className="image">
+							<Link to={`/account/${account.link}`} style={{margin: '0'}}>
+								<Avatar image={account.avatar.image} type='medium' size={account.avatar.size} position={account.avatar.position} />
+							</Link>
+							<Link to={`/account/${account.link}`}>{account.username}</Link>
+						</div>
+					</section>
+					<Team account={account} friends={friends} />
+					<Menu />
+				</div>
+			)}
 		</div>
 	)
 }

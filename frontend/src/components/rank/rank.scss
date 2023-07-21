@@ -11,6 +11,44 @@
     padding: $padding * 3;
 
     & .elem {
+        &.landing {
+            & .landingImg {
+                width: 175px;
+                height: 70px;
+
+                background-color: $themeBlack_background;
+                border-radius: $borderRadius;
+            }
+            & .name {
+                width: 60%;
+                height: 20px;
+
+                border-radius: $borderRadius;
+                background-color: $themeBlack_background;
+
+                margin: 0 auto;
+                margin-top: $margin * 2;
+            }
+            & .matchcounts {
+                & .rpp {
+                    width: 50px;
+                    height: 25px;
+
+                    &:after {
+                        display: none;
+                    }
+                }
+                & h1 {
+                    width: 82px;
+                    height: 16px;
+
+                    border-radius: $borderRadius;
+                    background-color: $themeBlack_background;
+                }
+            }
+        }
+
+
         width: calc(100% / 3);
 
         & img {

@@ -1,5 +1,100 @@
 @import '../../rules/scss/variables.scss';
 
+.newsLanding {
+    & .title {
+        width: 70%;
+        height: 30px;
+
+        background-color: $themeBlack_domBackgroundOther;
+        border-radius: $borderRadius;
+    }
+
+    & .list {
+        & .item {
+            & .itemHeader {
+                & .landingAvatar {
+                    width: 50px;
+                    height: 50px;
+
+                    border-radius: 50%;
+                    background-color: $themeBlack_background;
+                }
+                & h1 {
+                    & span {
+                        width: 90px;
+                        height: 20px;
+
+                        background-color: $themeBlack_background;
+                        border-radius: $borderRadius;
+
+                        display: block;
+                    }
+                    & h3 {
+                        width: 70px;
+                        height: 13px;
+
+                        background-color: $themeBlack_background;
+                        border-radius: $borderRadius;
+                    }
+                }
+            }
+            & .body {
+                & .text {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: $margin;
+
+                    & div {
+                        width: 70px;
+                        height: 22px;
+
+                        background-color: $themeBlack_background;
+                        border-radius: $borderRadius;
+
+                        &:nth-child(1) {
+                            width: 160px;
+                        }
+                        &:nth-child(2) {
+                            width: 70px;
+                        }
+                        &:nth-child(3) {
+                            width: 120px;
+                        }
+                        &:nth-child(4) {
+                            width: 85px;
+                        }
+                        &:nth-child(5) {
+                            width: 190px;
+                        }
+                        &:nth-child(6) {
+                            width: 210px;
+                        }
+                    }
+                }
+                & .attached {
+                    background-color: $themeBlack_background;
+                    border-radius: $borderRadius;
+                }
+            }
+            & .bottom {
+                & .btn {
+                    width: 70px;
+                    height: 22px;
+
+                    background-color: $themeBlack_background;
+                    border-radius: $borderRadius;
+
+                    margin-right: $margin;
+                }
+
+                & .views .btn:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
 .news {
     width: calc(100% + $padding * 3 - $padding * 5);
     min-width: calc(500px + $padding * 3 - $padding * 5);

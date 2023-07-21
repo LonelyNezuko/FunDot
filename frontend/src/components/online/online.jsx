@@ -13,7 +13,7 @@ export default function Online() {
             size: 100,
             position: { x: 0, y: 0 }
         }, status: { type: 'Наелся и спит' } },
-        { username: 'bot', id: '123', isVerified: false, isBot: true, avatar: { image: 'https://cdn.dribbble.com/users/1708653/screenshots/5355337/libe2.png', size: 200, position: {x: -40, y: 0} }, status: { type: 'watchmatch', matchid: 2758272 } },
+        { username: 'bot', id: '', isVerified: false, isBot: true, avatar: { image: 'https://cdn.dribbble.com/users/1708653/screenshots/5355337/libe2.png', size: 200, position: {x: -40, y: 0} }, status: { type: 'watchmatch', matchid: 2758272 } },
         { username: 'User', id: '2561', isVerified: false, isBot: false, avatar: { image: 'https://gas-kvas.com/uploads/posts/2023-01/1673362466_gas-kvas-com-p-anime-risunki-amino-23.jpg' }, status: { type: 'playmatch', matchid: 58295727, gameName: 'Dota 2' } },
         { username: 'User 2', id: '231331', isVerified: false, isBot: false, avatar: { image: 'https://gas-kvas.com/uploads/posts/2023-01/1673362466_gas-kvas-com-p-anime-risunki-amino-23.jpg' }, status: { type: 'Бугагага' } }
     ])

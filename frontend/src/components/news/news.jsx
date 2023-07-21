@@ -5,6 +5,8 @@ import $ from 'jquery'
 import Moment from 'moment'
 import 'moment/locale/ru'
 
+import NewsLanding from "./landing"
+
 import intToString from '../../modules/intToString'
 import Avatar from '../avatar/avatar'
 import Modal from '../_modals/index/index'
@@ -42,6 +44,11 @@ export default function News(props) {
     React.useEffect(() => {
         setNews(props.news)
     }, [props.news])
+
+    const [ landing, setLanding ] = React.useState(props.landing || false)
+    React.useEffect(() => {
+        setLanding(props.landing)
+    }, [props.landing])
 
     const onNews = {
         _getNews: () => {
@@ -198,145 +205,153 @@ export default function News(props) {
 
     return (
         <section className="news" id={props.id}>
-            {deletePost.toggle ? (
-                <Modal
-                    toggle={true}
+            {landing ? (
+                <>
+                    <NewsLanding />
+                </>
+            ) : (
+                <>
+                    {deletePost.toggle ? (
+                        <Modal
+                            toggle={true}
 
-                    title="Удаление поста"
-                    desciption="Вы действительно желаете удалить данный пост?"
-                    icon={( <MdFolderDelete /> )}
+                            title="Удаление поста"
+                            desciption="Вы действительно желаете удалить данный пост?"
+                            icon={( <MdFolderDelete /> )}
 
-                    body={(
-                        <div className="news">
-                            <div className="list" style={{margin: '0', padding: '0'}}>
-                                <NewsRender item={news[deletePost.postid]} i={deletePost.postid} props={props} preview={true} />
+                            body={(
+                                <div className="news">
+                                    <div className="list" style={{margin: '0', padding: '0'}}>
+                                        <NewsRender item={news[deletePost.postid]} i={deletePost.postid} props={props} preview={true} />
+                                    </div>
+                                </div>
+                            )}
+                            buttons={['Нет', 'Да']}
+
+                            onClose={() => setDeletePost({ toggle: false, id: -1 })}
+                            onClick={() => onNews.deletePost(deletePost.id, true)}
+                        />
+                    ) : ''}
+
+                    
+                    <header className="title">{props.title || 'Лента новостей'}</header>
+
+                    {props.addform ? (
+                        <div className={`newpost ${addFormShow ? 'show' : ''}`}>
+                            <div className="text">
+                                <div className="form">
+                                    <Avatar type="min" image='https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg' size='200' />
+                                    <div className="forminput forminputtextarea">
+                                        <div id="newsNewPostText" onInput={event => {
+                                            if(event.target.textContent.length
+                                                || addForm.files.length) setAddFormShow(true)
+                                            else setAddFormShow(false)
+
+                                            setAddForm({ ...addForm, text: event.target.textContent })
+                                        }} className="textarea" data-placeholder="Что-то новенькое? Поделитесь этим" contentEditable={true} aria-multiline="true"></div>
+                                    </div>
+                                </div>
                             </div>
+                            <div className="settings">
+                                <div className="form flex">
+                                    <div className="forminput forminputchoice">
+                                        <Select _type={addForm.access} _list={[
+                                            [ 'public', 'Доступный всем' ],
+                                            [ 'friends/subs', 'Для друзей и подписчиков' ],
+                                            [ 'friends', 'Только для друзей' ],
+                                            [ 'subs', 'Только для подписчиков' ]
+                                        ]} onChange={event => {
+                                            setAddForm({ ...addForm, access: event[0] })
+                                        }} />
+                                    </div>
+                                    <div className="forminput forminputchoice">
+                                        <Select _type={addForm.notify} _list={[
+                                            [ 'yes', 'Получать уведомления' ],
+                                            [ 'no', 'Не получать уведомления' ]
+                                        ]} onChange={event => {
+                                            setAddForm({ ...addForm, notify: event[0] })
+                                        }} />
+                                    </div>
+                                </div>
+                            </div>
+                            <FormAttach id="newsNewPost" maxFiles={10} _accept="image/*, videos/*, text/*" _multiple={true} _files={addForm.files} onLoad={event => {
+                                const filesTemp = [...addForm.files]
+
+                                event.map(item => {
+                                    if(item.type.indexOf('image/') === 0
+                                        || item.type.indexOf('text/') === 0
+                                        || item.type.indexOf('videos/') === 0) filesTemp.push(item)
+                                })
+                                setAddForm({ ...addForm, files: filesTemp })
+                            }} onDelete={event => {
+                                const filesTemp = [...addForm.files]
+                                let index = -1
+
+                                filesTemp.filter((file, i) => {
+                                    if(file === event) {
+                                        return index = i
+                                    }
+                                })
+
+                                if(index != -1) filesTemp.splice(index, 1)
+                                setAddForm({ ...addForm, files: filesTemp })
+
+                                if($('#newsNewPostText')[0].textContent.length
+                                    || filesTemp.length) setAddFormShow(true)
+                                else setAddFormShow(false)
+                            }} />
+                            <div className="buttons">
+                                <span style={{display: 'block'}}>&nbsp;</span>
+                                <button className="btn" onClick={() => onAddFormSubmit()}>Выложить</button>
+                            </div>
+                        </div>
+                    ) : ''}
+
+                    {!news.length ? (
+                        <div className="nonews">
+                        <RiPagesLine />
+                        <h1>Пока ничего</h1>
+                    </div>
+                    ) : ''}
+                    {props.account ? (
+                        <div className="list" data-news={JSON.stringify(news)}>
+                            {news.map((item, i) => {
+                                if(!item.isPin)return
+                                
+                                if(item.hidden) {
+                                    return <NewsHidden item={item} i={i} onNews={onNews} />
+                                }
+                                if(item.blocked) {
+                                    return <NewsBlocked item={item} i={i} onNews={onNews} />
+                                }
+                                return <NewsRender item={item} i={i} onNews={onNews} props={props} />
+                            })}
+                            {news.map((item, i) => {
+                                if(item.isPin)return
+
+                                if(item.hidden) {
+                                    return <NewsHidden item={item} i={i} onNews={onNews} />
+                                }
+                                if(item.blocked) {
+                                    return <NewsBlocked item={item} i={i} onNews={onNews} />
+                                }
+                                return <NewsRender item={item} i={i} onNews={onNews} props={props} />
+                            })}
+                        </div>
+                    ) : (
+                        <div className="list" data-news={JSON.stringify(news)}>
+                            {news.map((item, i) => {
+                                if(item.hidden) {
+                                    return <NewsHidden item={item} i={i} onNews={onNews} />
+                                }
+                                if(item.blocked) {
+                                    return <NewsBlocked item={item} i={i} onNews={onNews} />
+                                }
+                                return <NewsRender item={item} i={i} onNews={onNews} props={props} />
+                            })}
                         </div>
                     )}
-                    buttons={['Нет', 'Да']}
-
-                    onClose={() => setDeletePost({ toggle: false, id: -1 })}
-                    onClick={() => onNews.deletePost(deletePost.id, true)}
-                />
-            ) : ''}
-
-            
-            <header className="title">{props.title || 'Лента новостей'}</header>
-
-            {props.addform ? (
-                <div className={`newpost ${addFormShow ? 'show' : ''}`}>
-                    <div className="text">
-                        <div className="form">
-                            <Avatar type="min" image='https://static.displate.com/857x1200/displate/2019-09-04/04e658831fcb7ec9958f496c029cccd2_93f63c496c402fa7ace55ddd3b26bdf8.jpg' size='200' />
-                            <div className="forminput forminputtextarea">
-                                <div id="newsNewPostText" onInput={event => {
-                                    if(event.target.textContent.length
-                                        || addForm.files.length) setAddFormShow(true)
-                                    else setAddFormShow(false)
-
-                                    setAddForm({ ...addForm, text: event.target.textContent })
-                                }} className="textarea" data-placeholder="Что-то новенькое? Поделитесь этим" contentEditable={true} aria-multiline="true"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="settings">
-                        <div className="form flex">
-                            <div className="forminput forminputchoice">
-                                <Select _type={addForm.access} _list={[
-                                    [ 'public', 'Доступный всем' ],
-                                    [ 'private', 'Для друзей и подписчиков' ],
-                                    [ 'privatefriends', 'Только для друзей' ],
-                                    [ 'privatesubs', 'Только для подписчиков' ]
-                                ]} onChange={event => {
-                                    setAddForm({ ...addForm, access: event[0] })
-                                }} />
-                            </div>
-                            <div className="forminput forminputchoice">
-                                <Select _type={addForm.notify} _list={[
-                                    [ 'yes', 'Получать уведомления' ],
-                                    [ 'no', 'Не получать уведомления' ]
-                                ]} onChange={event => {
-                                    setAddForm({ ...addForm, notify: event[0] })
-                                }} />
-                            </div>
-                        </div>
-                    </div>
-                    <FormAttach id="newsNewPost" maxFiles={10} _accept="image/*, videos/*, text/*" _multiple={true} _files={addForm.files} onLoad={event => {
-                        const filesTemp = [...addForm.files]
-
-                        event.map(item => {
-                            if(item.type.indexOf('image/') === 0
-                                || item.type.indexOf('text/') === 0
-                                || item.type.indexOf('videos/') === 0) filesTemp.push(item)
-                        })
-                        setAddForm({ ...addForm, files: filesTemp })
-                    }} onDelete={event => {
-                        const filesTemp = [...addForm.files]
-                        let index = -1
-
-                        filesTemp.filter((file, i) => {
-                            if(file === event) {
-                                return index = i
-                            }
-                        })
-
-                        if(index != -1) filesTemp.splice(index, 1)
-                        setAddForm({ ...addForm, files: filesTemp })
-
-                        if($('#newsNewPostText')[0].textContent.length
-                            || filesTemp.length) setAddFormShow(true)
-                        else setAddFormShow(false)
-                    }} />
-                    <div className="buttons">
-                        <span style={{display: 'block'}}>&nbsp;</span>
-                        <button className="btn" onClick={() => onAddFormSubmit()}>Выложить</button>
-                    </div>
-                </div>
-            ) : ''}
-
-            {!news.length ? (
-                <div className="nonews">
-                <RiPagesLine />
-                <h1>Пока ничего</h1>
-            </div>
-            ) : ''}
-            {props.account ? (
-                <div className="list" data-news={JSON.stringify(news)}>
-                    {news.map((item, i) => {
-                        if(!item.isPin)return
-                        
-                        if(item.hidden) {
-                            return <NewsHidden item={item} i={i} onNews={onNews} />
-                        }
-                        if(item.blocked) {
-                            return <NewsBlocked item={item} i={i} onNews={onNews} />
-                        }
-                        return <NewsRender item={item} i={i} onNews={onNews} props={props} />
-                    })}
-                    {news.map((item, i) => {
-                        if(item.isPin)return
-
-                        if(item.hidden) {
-                            return <NewsHidden item={item} i={i} onNews={onNews} />
-                        }
-                        if(item.blocked) {
-                            return <NewsBlocked item={item} i={i} onNews={onNews} />
-                        }
-                        return <NewsRender item={item} i={i} onNews={onNews} props={props} />
-                    })}
-                </div>
-            ) : (
-                <div className="list" data-news={JSON.stringify(news)}>
-                    {news.map((item, i) => {
-                        if(item.hidden) {
-                            return <NewsHidden item={item} i={i} onNews={onNews} />
-                        }
-                        if(item.blocked) {
-                            return <NewsBlocked item={item} i={i} onNews={onNews} />
-                        }
-                        return <NewsRender item={item} i={i} onNews={onNews} props={props} />
-                    })}
-                </div>
+                </>
             )}
         </section>
     )

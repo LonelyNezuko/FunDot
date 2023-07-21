@@ -3,41 +3,85 @@ import $ from 'jquery'
 
 import './rank.scss'
 
-export function Rank({ rpp }) {
+export function Rank({ rpp, landing }) {
+    const [ _landing, _setLanding ] = React.useState(landing || false)
+    React.useEffect(() => {
+        _setLanding(landing)
+    }, [ landing ])
+
     return (
         <div className="rank">
-            <div className="elem empty">
-                <div className="wrap" style={{display: !rankPrevRPP(rpp) ? 'none' : 'block'}}>
-                    <img src={rankGetID(rankPrevRPP(rpp)).img} />
-                    <div className="name">
-                        <h1>{rankGetID(rankPrevRPP(rpp)).name}</h1>
+            {_landing ? (
+                <>
+                    <div className="elem landing">
+                        <div className="wrap" style={{display: 'block'}}>
+                            <div className="landingImg landingAnimate"></div>
+                            <div className="name landingAnimate">
+                                <h1></h1>
+                            </div>
+                            <div className="matchcounts">
+                                <span className="rpp landingAnimate"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div className="matchcounts">
-                        <span className="rpp">{rankPrevRPP(rpp).toLocaleString()}</span>
+                    <div className="elem landing">
+                        <div className="landingImg landingAnimate"></div>
+                        <div className="name landingAnimate">
+                            <h1></h1>
+                        </div>
+                        <div className="matchcounts">
+                            <span className="rpp landingAnimate"></span>
+                            <h1 className="landingAnimate"></h1>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="elem">
-                <img src={rankGetID(rpp).img} />
-                <div className="name">
-                    <h1>{rankGetID(rpp).name}</h1>
-                </div>
-                <div className="matchcounts">
-                    <span className="rpp">{rpp.toLocaleString()}</span>
-                    <h1>12.582 матчей</h1>
-                </div>
-            </div>
-            <div className="elem">
-                <div className="wrap" style={{display: !rankNextRPP(rpp) ? 'none' : 'block'}}>
-                    <img src={rankGetID(rankNextRPP(rpp)).img} />
-                    <div className="name">
-                        <h1>{rankGetID(rankNextRPP(rpp)).name}</h1>
+                    <div className="elem landing">
+                        <div className="wrap" style={{display: 'block'}}>
+                            <div className="landingImg landingAnimate"></div>
+                            <div className="name landingAnimate">
+                                <h1></h1>
+                            </div>
+                            <div className="matchcounts">
+                                <span className="rpp landingAnimate"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div className="matchcounts">
-                        <span className="rpp">{rankNextRPP(rpp).toLocaleString()}</span>
+                </>   
+            ) : (
+                <>
+                    <div className="elem">
+                        <div className="wrap" style={{display: !rankPrevRPP(rpp) ? 'none' : 'block'}}>
+                            <img src={rankGetID(rankPrevRPP(rpp)).img} />
+                            <div className="name">
+                                <h1>{rankGetID(rankPrevRPP(rpp)).name}</h1>
+                            </div>
+                            <div className="matchcounts">
+                                <span className="rpp">{rankPrevRPP(rpp).toLocaleString()}</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div className="elem">
+                        <img src={rankGetID(rpp).img} />
+                        <div className="name">
+                            <h1>{rankGetID(rpp).name}</h1>
+                        </div>
+                        <div className="matchcounts">
+                            <span className="rpp">{rpp.toLocaleString()}</span>
+                            <h1>12.582 матчей</h1>
+                        </div>
+                    </div>
+                    <div className="elem">
+                        <div className="wrap" style={{display: !rankNextRPP(rpp) ? 'none' : 'block'}}>
+                            <img src={rankGetID(rankNextRPP(rpp)).img} />
+                            <div className="name">
+                                <h1>{rankGetID(rankNextRPP(rpp)).name}</h1>
+                            </div>
+                            <div className="matchcounts">
+                                <span className="rpp">{rankNextRPP(rpp).toLocaleString()}</span>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
     )
 }

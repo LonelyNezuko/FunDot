@@ -6,14 +6,26 @@ import {
     useLocation,
     useNavigate
 } from 'react-router-dom'
+import Cookies from 'universal-cookie'
+import countryParser from '@ejarnutowski/country-parser'
+
+import moment from 'moment'
+import 'moment/locale/ru'
 
 import './account.scss'
+
+import AccountLandingHeader from './landing_header'
+import AccountLandingBodyStats from './landing_body_stats'
+
+import Error404Page from '../404/404'
 
 import News from '../../components/news/news'
 import { Rank } from '../../components/rank/rank'
 
 import Avatar from '../../components/avatar/avatar'
 import Modal from '../../components/_modals/index/index'
+
+import notify from '../../modules/notify'
 
 import { FaGamepad } from 'react-icons/fa'
 import { IoMdStats } from 'react-icons/io'
@@ -32,66 +44,123 @@ import { FiUpload } from 'react-icons/fi'
 
 export default function AccountPage() {
     React.useMemo(() => { document.title = "FunDot - Аккаунт" })
+    const cookies = new Cookies()
+
+    const [ landingHeader, setLandingHeader ] = React.useState(true)
+    const [ landingBody, setLandingBody ] = React.useState(true)
 
     const location = useLocation()
     const params = useParams()
     const navigate = useNavigate()
 
-    const [ isBlocked, setIsBlocked ] = React.useState(0)
-    if(isBlocked)return (
-        <div id="account">
-            <AccountPageHeader isBlocked={isBlocked} />
+    const [ account, setAccount ] = React.useState({})
+    const [ header, setHeader ] = React.useState({})
 
-            <div className="accountBlocked">
-                <div className="wrap">
-                    <MdOutlineBlock />
-                    {isBlocked === 1 ? (
-                        <>
-                            <h1>Вы заблокировали данного игрока и не можете просматривать его страницу</h1>
-                            <button className="btn">Разблокировать</button>
-                        </>
-                    ) : (<h1>Данный игрок заблокировал Вас, поэтому Вы не можете просматривать его страницу</h1>)}
-                </div>
-            </div>
-        </div>
-    )
+    const [ isBlocked, setIsBlocked ] = React.useState(0)
+
+    const [ notfound, setNotfound ] = React.useState(false)
+
+    React.useEffect(() => {
+        setNotfound(false)
+
+        setLandingBody(true)
+        if(!header.id || !params['*'].length) setLandingHeader(true)
+
+        let id = params.id
+        if(!id)return navigate('/')
+
+		const jwt = cookies.get('jsonwebtoken')
+		if(!jwt)return window.location = '/signin'
+
+		$.ajax({
+			url: `/api/user/account/${params.id}`,
+            type: "get",
+			headers: { jwt }
+		}).done(results => {
+            if(results.type === 'error') {
+                if(results.statusCode === 401)return window.location = '/signin'
+
+                if(results.message === 'Account not found') setNotfound(true)
+                else {
+                    notify('Упс. Кажется где-то ошибка (подробнее в консоли)')
+                    console.log(results)
+                }
+            }
+            else {
+			    setAccount(results.message)
+                setHeader(results.message)
+
+                setLandingBody(false)
+                setLandingHeader(false)
+            }
+		}).fail(err => {
+			notify('Упс. Кажется где-то ошибка (подробнее в консоли)')
+		})
+	}, [params])
 
     return (
         <div id="account">
-            <AccountPageHeader />
+            {notfound ? (<Error404Page />) : (
+                <>
+                    {landingHeader ? (<AccountLandingHeader />) : (
+                        <AccountPageHeader account={header} isBlocked={isBlocked} />
+                    )}
 
-            {!params['*'].length ? (<AccountPageHome />) : ''}
+                    {isBlocked ? (
+                        <div className="accountBlocked">
+                            <div className="wrap">
+                                <MdOutlineBlock />
+                                {isBlocked === 1 ? (
+                                    <>
+                                        <h1>Вы заблокировали данного игрока и не можете просматривать его страницу</h1>
+                                        <button className="btn">Разблокировать</button>
+                                    </>
+                                ) : (<h1>Данный игрок заблокировал Вас, поэтому Вы не можете просматривать его страницу</h1>)}
+                            </div>
+                        </div>
+                    ) : ''}
+
+                    {(!params['*'].length && !isBlocked) ? 
+                        landingBody ? (<AccountLandingBodyStats />) : (<AccountPageHome account={account} />)
+                    : ''}
+                </>
+            )}
         </div>
     )
 }
 
 
-function AccountPageHeader({ isBlocked }) {
+function AccountPageHeader({ isBlocked, account }) {
     const params = useParams()
     
-    const [ avatar, setAvatar ] = React.useState({
-        image: 'https://i.ibb.co/2cgHpWC/nezu5-2.jpg',
-        size: 100,
-        position: { x: 0, y: 0 }
-    })
-    const [ background, setBackground ] = React.useState({
-        image: 'https://rare-gallery.com/uploads/posts/955295-anime-anime-girls-digital-art-artwork-2D-portrait.jpg',
-        position: { x: 0, y: 0 }
-    })
+    // const [ avatar, setAvatar ] = React.useState({
+    //     image: '/assets/avatars/default.png',
+    //     size: 100,
+    //     position: { x: 0, y: 0 }
+    // })
+    // const [ background, setBackground ] = React.useState({
+    //     image: 'https://rare-gallery.com/uploads/posts/955295-anime-anime-girls-digital-art-artwork-2D-portrait.jpg',
+    //     position: { x: 0, y: 0 }
+    // })
 
     return (
         <header className="header">
-            <div className="accountBG" style={{backgroundImage: `url(${background.image})`, top: background.position.y + '%', left: background.position.x + '%'}}></div>
+            <div className="accountBG" style={{backgroundImage: `url(${account.background.image})`, top: account.background.position.y + '%', left: account.background.position.x + '%'}}></div>
             <div className="wrapper">
                 <div className="accountAvatar" style={{marginBottom: !isBlocked ? '' : '14px'}}>
-                    <Avatar image={avatar.image} size={avatar.size} position={avatar.position} type="megabig" code={!isBlocked ? (
-                            <Link to={`?image=${avatar.image}`} className="accountAvatarHover"></Link>
+                    <Avatar image={account.avatar.image} size={account.avatar.size} position={account.avatar.position} type="megabig" code={!isBlocked ? (
+                            <Link to={`?image=${account.avatar.image}`} className="accountAvatarHover"></Link>
                         ) : ''
                     } />
-                    <div className="wrap">
+                    <div className="wrap" style={{transform: isBlocked ? 'none' : 'translateX(16px)'}}>
                         <div className="title">
-                            <h1>LonelyNezuko <span className="verified color"></span></h1>
-                            <h2>Наелся и спит</h2>
+                            <h1>
+                                {account.username}
+                                
+                                {account.isVerified ? (<span className="verified color"></span>) : ''}
+                                {account.isBot ? (<span className="bot color"></span>) : ''}
+                            </h1>
+                            <h2>{account.signature}</h2>
                         </div>
                         {!isBlocked ? (
                             <button className="btn icon focus manage">
@@ -129,7 +198,7 @@ function AccountPageHeader({ isBlocked }) {
                             Игры
                         </Link>
                         <Link className={`item ${params['*'].indexOf('subs') !== -1 && 'selected'}`} to={`/account/${params.id}/subs`}>
-                            <FaUserFriends />
+                               <FaUserFriends />
                             Друзья и сабы
                             <h4>23 592</h4>
                         </Link>
@@ -145,7 +214,7 @@ function AccountPageHeader({ isBlocked }) {
         </header>
     )
 }
-function AccountPageHome() {
+function AccountPageHome({ account }) {
     const [ news, setNews ] = React.useState([
         { author: {
             id: 1,
@@ -225,7 +294,7 @@ function AccountPageHome() {
     return (
         <div className="home">
             <section className="section">
-                <Rank rpp={5928} />
+                <Rank rpp={account.rpp} />
                 <div className="stats">
                     <h1 className="title">
                         Основная статистика
@@ -235,24 +304,24 @@ function AccountPageHome() {
                         <div className="about">
                             <h1>Обо мне</h1>
                             <div>
-                                Родился, вырос, умер
+                                {account.about}
                             </div>
                         </div>
                         <div className="main">
                             <section className="country">
                                 <h1>Страна</h1>
                                 <span>
-                                    <img src="https://flagsapi.com/RU/shiny/64.png" />
-                                    Российская федерация
+                                    <img src={`https://flagsapi.com/${account.country}/shiny/64.png`} />
+                                    {countryParser.getName(account.country)}
                                 </span>
                             </section>
                             <section className="regdate">
                                 <h1>Дата регистрации</h1>
                                 <span>
-                                    15.07.2023
+                                    {moment(account.createDate).format('DD.MM.YYYY')}
                                 </span>
                             </section>
-                            <section className="regdate">
+                            <section className="steam">
                                 <h1>Steam</h1>
                                 <span>
                                     <Link target="_blank" to={`https://steamcommunity.com/id/${steam}`} className="link color">LonelyNezuko</Link>

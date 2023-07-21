@@ -14,7 +14,6 @@ import ImagePreview from "./components/_modals/imagepreview/imagepreview";
 export default function Layout()
 {
     const location = useLocation();
-    console.log(location)
     return (
         <>
             <div id="notify"></div>

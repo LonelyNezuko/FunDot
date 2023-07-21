@@ -1,9 +1,11 @@
 import React from 'react'
 import $ from 'jquery'
 import { Link, useLocation } from 'react-router-dom'
+import Cookies from 'universal-cookie'
 
 import isValid from '../../modules/validate'
 import setTitleName from '../../modules/setTitleName'
+import notify from '../../modules/notify'
 
 import Modal from '../../components/_modals/index/index'
 import CircleLoader from '../../components/circleLoader/circleLoader'
@@ -18,12 +20,13 @@ import { MdPrivacyTip } from 'react-icons/md'
 
 export default function SigninPage() {
     React.useMemo(() => { setTitleName("Авторизация") })
+    const cookies = new Cookies()
 
     const [ type, setType ] = React.useState(0)
     const [ form, setForm ] = React.useState({
         signinFormUsername: '',
         signinFormPassword: '',
-        signinRemember: false,
+        signinFormRemember: false,
 
         signupFormEmail: '',
         signupFormUsername: '',
@@ -38,6 +41,8 @@ export default function SigninPage() {
 
         signinFormPasswordView: false,
         signupFormPasswordView: false,
+
+        signupFormRemember: false
     })
     const [ status, setStatus ] = React.useState(false)
 
@@ -55,18 +60,20 @@ export default function SigninPage() {
     }
     function onFormUpdate(id, value) {
         $(`#signin #${id} ~ .error`).removeClass('show')
-        function error(text) {
+        function error(text, notimer = false) {
             $(`#signin #${id} ~ .error`).text(text)
             $(`#signin #${id} ~ .error`).addClass('show')
 
-            setTimeout(() => {
-                $(`#signin #${id} ~ .error`).removeClass('show')
-            }, 2000)
+            if(!notimer) {
+                setTimeout(() => {
+                    $(`#signin #${id} ~ .error`).removeClass('show')
+                }, 2000)
+            }
         }
 
         if(id === 'signupFormEmail'
             && !isValid.email(value)
-            && value.length) error('Не корректная почта')
+            && value.length) error('Не корректная почта', true)
         
         if(id === 'signupFormPromo'
             && value.indexOf('#') !== -1) value = value.replace('#', '')
@@ -76,20 +83,106 @@ export default function SigninPage() {
         if(id === 'signupFormTerms'
             && !form.signupFormTermsCheck)return error('Сначала прочтите условия пользования')
 
+        if(id === 'signinFormPassword'
+            || id === 'signupFormPassword') {
+            if((id === 'signinFormPassword' && (form.signinFormPassword.length < 5 || form.signinFormPassword.length > 45))
+                || (id === 'signupFormPassword' && (form.signupFormPassword.length < 5 || form.signupFormPassword.length > 45))) error('Длина пароля должна быть от 6, до 45 символов', true)
+            
+            if((id === 'signinFormPassword' && /[а-яА-ЯЁё]/.test(form.signinFormPassword))
+                || (id === 'signupFormPassword' && /[а-яА-ЯЁё]/.test(form.signupFormPassword))) error('Пароль не должен содержать кириллицу', true)
+        }
+        if(id === 'signinFormUsername'
+            || id === 'signupFormUsername') {
+            if((id === 'signinFormUsername' && (form.signinFormUsername.length < 2 || form.signinFormUsername.length > 45))
+                || (id === 'signupFormUsername' && (form.signupFormUsername.length < 2 || form.signupFormUsername.length > 45))) error('Длина ника должна быть от 3, до 45 символов', true)
+            
+            if((id === 'signinFormUsername' && /[а-яА-ЯЁё]/.test(form.signinFormUsername))
+                || (id === 'signupFormUsername' && /[а-яА-ЯЁё]/.test(form.signupFormUsername))) error('Ник не должен содержать кириллицу', true)
+        }
+
         setForm({...form, [id]: value})
     }
     function onFormSubmit(type) {
         if(!isFormFilled(type)
             || status)return
+
+        function error(id, text) {
+            $(`#signin #${id} ~ .error`).text(text)
+            $(`#signin #${id} ~ .error`).addClass('show')
+
+            setTimeout(() => {
+                $(`#signin #${id} ~ .error`).removeClass('show')
+            }, 3000)
+        }
         
         setStatus(true)
-        setTimeout(() => {
-            setStatus(false)
-        }, 2000)
+        if(type === 0) {
+            $.get('/api/user/signin', {
+                username: form.signinFormUsername,
+                password: form.signinFormPassword,
+                remember: form.signinFormRemember
+            }, results => {
+                if(results.type === 'error') {
+                    if(results.message === 'You are already logged in') window.location = '/'
+                    else if(results.message === 'Fields should not be empty'
+                        || results.message === 'Incorrect data') notify('Кажется некоторые данные были не верно отправлены. Перероверьте и попытайтесь снова')
+                    else if(results.message === 'Account not found') error('signinFormUsername', 'Аккаунт с такими данными не найден')
+                    else if(results.message === 'Invalid account password') error('signinFormPassword', 'Не верный пароль от аккаунта')
+                    else {
+                        notify('Упс. Кажется где-то ошибка (подробнее в консоли)')
+                        console.log(results)
+                    }
+                }
+                else {
+                    cookies.set('jsonwebtoken', results.message, { maxAge: !form.signinFormRemember ? 3600 * 1 : 3600 * 7 })
+                    notify('Успешная авторизация. Сейчас переведем Вас на главную страницу', 'success')
+                    
+                    setTimeout(() => {
+                        window.location = '/'
+                    }, 3000)
+
+                    return false
+                }
+
+                setStatus(false)
+            }).fail(err => {
+                notify('Упс. Кажется где-то ошибка (подробнее в консоли)')
+                setStatus(false)
+            })
+        }
+        else if(type === 1) {
+            $.post('/api/user/signin/up', {
+                username: form.signupFormUsername,
+                password: form.signupFormPassword,
+                email: form.signupFormEmail,
+                promo: !form.signupFormPromo.length ? null : form.signupFormPromo
+            }, results => {
+                if(results.type === 'error') {
+                    if(results.message === 'You are already logged in') window.location = '/'
+                    else if(results.message === 'Fields should not be empty'
+                        || results.message === 'Incorrect data') notify('Кажется некоторые данные были не верно отправлены. Перероверьте и попытайтесь снова')
+                    else if(results.message === 'Account witch this username already exists') error('signupFormUsername', 'Аккаунт с таким ником уже зарегистрирован. Придумайте другой')
+                    else {
+                        notify('Упс. Кажется где-то ошибка (подробнее в консоли)')
+                        console.log(results)
+                    }
+                }
+                else {
+                    setType(0)
+                    setForm({ ...form, signinFormUsername: form.signupFormUsername, signinFormPassword: form.signupFormPassword, signinFormRemember: form.signupFormRemember })
+                }
+
+                setStatus(false)
+            }).fail(err => {
+                notify('Упс. Кажется где-то ошибка (подробнее в консоли)')
+                setStatus(false)
+            })
+        }
     }
     function isFormFilled(type) {
         if(!type) {
-            if(form.signinFormUsername.length && form.signinFormPassword.length)return true
+            if(form.signinFormUsername.length >= 3 && form.signinFormUsername.length < 45
+                && form.signinFormPassword.length >= 6 && form.signinFormPassword.length < 45)return true
         }
         else if(type === 1) {
             if(form.signupFormEmail.length
@@ -202,7 +295,7 @@ export default function SigninPage() {
 
                     <div className={`rules ${status && 'blockedEx blockedEx-nonop'}`}>
                         <section className="forminputcheckbox">
-                            <input id="signinFormRemember" type="checkbox" />
+                            <input id="signinFormRemember" type="checkbox" checked={form.signinFormRemember} onChange={event => onFormUpdate(event.target.id, event.target.checked)} />
                             <h1 className="error"></h1>
                             <label for="signinFormRemember">Запомнить меня и не выходить с аккаунта</label>
                         </section>
@@ -258,6 +351,11 @@ export default function SigninPage() {
                             <input onChange={event => onFormUpdate(event.target.id, event.target.checked)} checked={form.signupFormTerms} id="signupFormTerms" type="checkbox" />
                             <h1 className="error"></h1>
                             <label for="signupFormTerms">Я ознакомился с <Link onClick={() => setForm({...form, signupFormTermsCheck: true})} to={`${location.hash}#terms`}>условиями пользования</Link></label>
+                        </section>
+                        <section className="forminputcheckbox">
+                            <input id="signupFormRemember" type="checkbox" checked={form.signupFormRemember} onChange={event => onFormUpdate(event.target.id, event.target.checked)} />
+                            <h1 className="error"></h1>
+                            <label for="signupFormRemember">Запомнить меня и не выходить с аккаунта</label>
                         </section>
                     </div>
 
